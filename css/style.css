@@ -1,22 +1,99 @@
+:root {
+    --box-size: 20px;
+    box-sizing: border-box;
+}
+
 .tabuleiro {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(24, 1fr);
+    width: calc(var(--box-size) * 24);
+    height: calc(var(--box-size) * 25);
 }
-
 .tabuleiro div {
-    width: calc(3*(1em));
-    height: calc(3*(1em));
+    border: 1px solid black;
+}
+
+.cima, .baixo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--box-size) * 18);
+    height: calc(var(--box-size) * 3);
+}
+
+.esquerda, .direita {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.cima .normal, .baixo .normal {
+    width: calc(var(--box-size) * 2);
+    height: calc(var(--box-size) * 3);
+}
+
+.esquerda .normal, .direita .normal {
+    width: calc(var(--box-size) * 3);
+    height: calc(var(--box-size) * 2);
+}
+
+.cima {
+    grid-column: 4 / span 18;
+    grid-row: 1 / span 3;
+}
+
+.baixo {
+    grid-column: 4 / span 18;
+    grid-row: 22 / span 3;
+}
+
+.esquerda {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 18;
+}
+
+.direita {
+    grid-column: 22 / span 3;
+    grid-row: 4 / span 18;
+}
+
+.tabuleiro .especial {
+    width: calc(3*(var(--box-size)));
+    height: calc(3*(var(--box-size)));
+}
+
+.cima, .baixo{
+    width: calc(2*(var(--box-size)));
+    height: calc(3*(var(--box-size)));
+}
+
+.esquerda, .direita{
+    width: calc(3*(var(--box-size)));
+    height: calc(2*(var(--box-size)));
+}
+
+#estacionamento {
     background-color: #dd4c4c;
-}
-
-
-#cadeia {
-    grid-column: 10/ span 3;
-    grid-row: 10/ span 3;
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
 }
 
 #cadeia {
-    grid-column: 21/ span 3;
-    grid-row: 21/ span 3;
+    background-color: #dd4c4c;
+    grid-column: 1 / span 3;
+    grid-row: 22 / span 3;
+}
+
+#vaipracadeia {
+    background-color: #dd4c4c;
+    grid-column: 22/ span 3;
+    grid-row: 1 / span 3;
+}
+
+#inicio {
+    background-color: #dd4c4c;
+    grid-column: 22 / span 3;
+    grid-row: 22 / span 3;
 }
