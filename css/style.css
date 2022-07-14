@@ -1,0 +1,22 @@
+.tabuleiro {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(24, 1fr);
+}
+
+.tabuleiro div {
+    width: calc(3*(1em));
+    height: calc(3*(1em));
+    background-color: #dd4c4c;
+}
+
+
+#cadeia {
+    grid-column: 10/ span 3;
+    grid-row: 10/ span 3;
+}
+
+#cadeia {
+    grid-column: 21/ span 3;
+    grid-row: 21/ span 3;
+}
