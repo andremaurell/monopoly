@@ -1,6 +1,5 @@
 :root {
     --box-size: 20px;
-    box-sizing: border-box;
 }
 
 .tabuleiro {
@@ -8,25 +7,51 @@
     grid-template-columns: repeat(24, 1fr);
     grid-template-rows: repeat(24, 1fr);
     width: calc(var(--box-size) * 24);
-    height: calc(var(--box-size) * 25);
+    height: calc(var(--box-size) * 24);
 }
 .tabuleiro div {
     border: 1px solid black;
 }
 
-.cima, .baixo {
+.cima, .baixo, .esquerda, .direita {
+    background-color: #f00;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: calc(var(--box-size) * 18);
-    height: calc(var(--box-size) * 3);
+}
+
+.cima, .baixo {
+    width: calc(2*9*(var(--box-size)));
+    height: calc(3*(var(--box-size)));
 }
 
 .esquerda, .direita {
-    display: flex;
+    width: calc(3*(var(--box-size)));
+    height: calc(2*9*(var(--box-size)));
+}
+
+.cima {
+    flex-direction: row;
+    grid-column: 4 / span 18;
+    grid-row: 1 / span 3;
+}
+
+.baixo {
+    flex-direction: row-reverse;
+    grid-column: 4 / span 18;
+    grid-row: 22 / span 3;
+}
+
+.esquerda {
+    grid-column: 1 / span 3;
+    grid-row: 4 / span 18;
+    flex-direction: column-reverse;
+}
+
+.direita {
+    grid-column: 22 / span 3;
+    grid-row: 4 / span 18;
     flex-direction: column;
-    
 }
 
 .cima .normal, .baixo .normal {
@@ -39,39 +64,11 @@
     height: calc(var(--box-size) * 2);
 }
 
-.cima {
-    grid-column: 4 / span 18;
-    grid-row: 1 / span 3;
-}
 
-.baixo {
-    grid-column: 4 / span 18;
-    grid-row: 22 / span 3;
-}
-
-.esquerda {
-    grid-column: 1 / span 3;
-    grid-row: 4 / span 18;
-}
-
-.direita {
-    grid-column: 22 / span 3;
-    grid-row: 4 / span 18;
-}
 
 .tabuleiro .especial {
     width: calc(3*(var(--box-size)));
     height: calc(3*(var(--box-size)));
-}
-
-.cima, .baixo{
-    width: calc(2*(var(--box-size)));
-    height: calc(3*(var(--box-size)));
-}
-
-.esquerda, .direita{
-    width: calc(3*(var(--box-size)));
-    height: calc(2*(var(--box-size)));
 }
 
 #estacionamento {
