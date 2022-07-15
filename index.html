@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/monopoly/css/reset.css">
-    <link rel="stylesheet" href="/monopoly/css/style.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Monopoly</title>
 </head>
 
@@ -38,7 +38,9 @@
         </div>
         <div class="especial estacionamento" id="21"></div>
         <div class="cima">
-            <div class="normal cidadeV 1" id="22"></div>
+            <div class="normal cidadeV 1" id="22">
+                <img src="" alt="">
+            </div>
             <div class="normal sorte 2" id="23"></div>
             <div class="normal cidadeV 2" id="24"></div>
             <div class="normal cidadeV 3" id="25"></div>
@@ -61,7 +63,15 @@
             <div class="normal cidadeAE 2" id="40"></div>
         </div>
     </div>
-    <script src="/monopoly/script/script.js"></script>
+    <div class="container">
+    <div class="rodaDado">
+            <img src="/img/dice-01.svg" id="die-1">
+            <img src="/img/dice-02.svg" id="die-2">
+    </div>
+    <p id="total"></p>
+    <button onclick="roll()">ROLL</button>
+</div>
+    <script src="/script/script.js"></script>
 </body>
 
 </html>

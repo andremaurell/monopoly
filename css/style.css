@@ -115,9 +115,64 @@
 
 .nome-cidade {
     font-size: .75rem;
+    z-index: 1;
 }
 
 .preco-cidade {
     font-size: .75rem;
     font-weight: bold;
+}
+.container {
+    position: absolute;
+    left: 19%;
+    top: 50%;
+    padding: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 50px;
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rodaDado{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
+p{
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+button{
+    border-radius: 5px;
+    border: 1px solid rgb(202, 170, 168);
+    cursor: pointer;
+}
+
+button:hover{
+    background: rgb(202, 170, 168);
+    border: 1px solid rgb(105, 58, 58);
+}
+button:focus{
+    border:1px solid rgb(105, 58, 58);
+}
+
+.shake{
+    animation: shake 0.5s infinite
+}
+
+@keyframes shake{
+    0%{ 
+    transform: rotate(8deg)
+    }
+    50%{
+        transform: rotate(-8deg);
+    }
+    100%{
+        transform: rotate(8deg)
+    }
 }

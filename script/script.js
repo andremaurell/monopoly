@@ -1,3 +1,26 @@
+let images = ["/img/dice-01.svg","/img/dice-02.svg","/img/dice-03.svg","/img/dice-04.svg","/img/dice-05.svg","/img/dice-06.svg"];
+let dice = document.querySelectorAll("img");
+let dado = 0;
+//cria o dado!
+function roll(){
+    dice.forEach(function(die){
+        die.classList.add("shake");
+    });
+    setTimeout(function(){
+        dice.forEach(function(die){
+            die.classList.remove("shake");
+        });
+        let dieOneValue = Math.floor(Math.random()*6);
+        let dieTwoValue = Math.floor(Math.random()*6);
+        document.querySelector("#die-1").setAttribute("src", images[dieOneValue]);
+        document.querySelector("#die-2").setAttribute("src", images[dieTwoValue]); 
+        let somaDosDados = ((dieOneValue +1) + (dieTwoValue + 1));
+        document.querySelector("#total").innerHTML = somaDosDados; //declaro a variavel dado pra utilizar ela no codigo inteiro
+        return window.dado =  somaDosDados
+    },
+    1000
+    );
+}
 class Jogador {
     constructor(id, nome, cor) {
         this.nome = nome;
@@ -93,14 +116,13 @@ class Tabuleiro {
 
         for (let i = 0; i < 10; i++) {
             this.jogadores.forEach(jogador => {
-                let dado = Math.floor(Math.random() * 6) + 1;
                 this.moverJogador(jogador, dado);
             }
             );
         }
     }
-
     moverJogador(jogador, dado) {
+        console.log(dado);
         let posicao = jogador.espaco.id + dado;
         if (posicao >= 40) {
             posicao -= 40;
