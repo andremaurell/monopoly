@@ -1,5 +1,6 @@
 :root {
-    --box-size: 20px;
+    font-size: 1rem;
+    --box-size: 1.5em;
 }
 
 .tabuleiro {
@@ -14,13 +15,13 @@
 }
 
 .cima, .baixo, .esquerda, .direita {
-    background-color: #f00;
+    background-color: rgb(223, 149, 149);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cima, .baixo {
+.baixo, .cima {
     width: calc(2*9*(var(--box-size)));
     height: calc(3*(var(--box-size)));
 }
@@ -28,12 +29,6 @@
 .esquerda, .direita {
     width: calc(3*(var(--box-size)));
     height: calc(2*9*(var(--box-size)));
-}
-
-.cima {
-    flex-direction: row;
-    grid-column: 4 / span 18;
-    grid-row: 1 / span 3;
 }
 
 .baixo {
@@ -48,10 +43,23 @@
     flex-direction: column-reverse;
 }
 
+.cima {
+    flex-direction: row;
+    grid-column: 4 / span 18;
+    grid-row: 1 / span 3;
+}
+
 .direita {
     grid-column: 22 / span 3;
     grid-row: 4 / span 18;
     flex-direction: column;
+}
+
+.normal, .especial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .cima .normal, .baixo .normal {
@@ -64,33 +72,52 @@
     height: calc(var(--box-size) * 2);
 }
 
-
-
 .tabuleiro .especial {
     width: calc(3*(var(--box-size)));
     height: calc(3*(var(--box-size)));
 }
 
-#estacionamento {
-    background-color: #dd4c4c;
+.estacionamento {
+    background-image: url(../img/estacionamento.png);
+    background-size: contain;
     grid-column: 1 / span 3;
     grid-row: 1 / span 3;
 }
 
-#cadeia {
+.cadeia {
     background-color: #dd4c4c;
+    background-image: url(../img/cadeia.png);
+    background-size: contain;
     grid-column: 1 / span 3;
     grid-row: 22 / span 3;
 }
 
-#vaipracadeia {
+.vaipracadeia {
     background-color: #dd4c4c;
+    background-image: url(../img/vaipracadeia.png);
+    background-size: contain;
     grid-column: 22/ span 3;
     grid-row: 1 / span 3;
 }
 
-#inicio {
+.inicio {
     background-color: #dd4c4c;
+    background-image: url(../img/inicio.png);
+    background-size: contain;
     grid-column: 22 / span 3;
     grid-row: 22 / span 3;
+}
+
+.jogador {
+    width: 10px;
+    height: 10px;
+}
+
+.nome-cidade {
+    font-size: .75rem;
+}
+
+.preco-cidade {
+    font-size: .75rem;
+    font-weight: bold;
 }
