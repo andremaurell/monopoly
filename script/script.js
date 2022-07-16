@@ -1,10 +1,10 @@
-let images = ["/monopoly/img/dice-01.svg","/monopoly/img/dice-02.svg","/monopoly/img/dice-03.svg","/monopoly/img/dice-04.svg","/monopoly/img/dice-05.svg","/monopoly/img/dice-06.svg"];
-let dice = document.querySelectorAll("img");
+let images = ["../monopoly/img/dice-01.svg","../monopoly/img/dice-02.svg","../monopoly/img/dice-03.svg","../monopoly/img/dice-04.svg","../monopoly/img/dice-05.svg","../monopoly/img/dice-06.svg"];
+let dice = document.getElementsByClassName("dado");
 let dado = 0;
 //cria o dado
 function roll(){
-    dice.forEach(function(die){
-        die.classList.add("shake");
+    dice.forEach(function(dado){
+        dado.classList.add("shake");
     });
     setTimeout(function(){
         dice.forEach(function(die){
@@ -12,11 +12,12 @@ function roll(){
         });
         let dieOneValue = Math.floor(Math.random()*6);
         let dieTwoValue = Math.floor(Math.random()*6);
-        document.querySelector("#die-1").setAttribute("src", images[dieOneValue]);
-        document.querySelector("#die-2").setAttribute("src", images[dieTwoValue]); 
+        document.getElementById("dado-1").setAttribute("src", images[dieOneValue]);
+        document.getElementById("dado-2").setAttribute("src", images[dieTwoValue]); 
         let somaDosDados = ((dieOneValue +1) + (dieTwoValue + 1));
-        document.querySelector("#total").innerHTML = somaDosDados; //declaro a variavel dado pra utilizar ela no codigo inteiro
-        return window.dado =  somaDosDados
+        document.getElementById("total").innerHTML = somaDosDados; //declaro a variavel dado pra utilizar ela no codigo inteiro
+        window.dado = somaDosDados
+        return somaDosDados
     },
     1000
     );
