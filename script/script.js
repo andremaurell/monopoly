@@ -1,4 +1,4 @@
-let images = ["/img/dice-01.svg","/img/dice-02.svg","/img/dice-03.svg","/img/dice-04.svg","/img/dice-05.svg","/img/dice-06.svg"];
+let images = ["../img/dice-01.svg","../img/dice-02.svg","../img/dice-03.svg","../img/dice-04.svg","../img/dice-05.svg","../img/dice-06.svg"];
 let dice = document.querySelectorAll("img");
 let dado = 0;
 //cria o dado!
