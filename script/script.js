@@ -1,12 +1,12 @@
-let dados = document.getElementsByClassName("dado");
+window.dados = document.getElementsByClassName("dado");
 window.dado = 0;
 //cria o dado
 function roll(){
-    dados.forEach(dado => {
+    window.dados.forEach(dado => {
         dado.classList.add('shake');
     });
     setTimeout(function(){
-        dice.forEach(dado => {
+        window.dados.forEach(dado => {
             dado.classList.remove('shake');
         });
         let dieOneValue = Math.floor(Math.random()*6) + 1;
