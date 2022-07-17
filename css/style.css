@@ -1,6 +1,15 @@
 :root {
     font-size: 1rem;
-    --box-size: 1.5em;
+    --box-size: 1.55em;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .tabuleiro {
@@ -9,10 +18,12 @@
     grid-template-rows: repeat(24, 1fr);
     width: calc(var(--box-size) * 24);
     height: calc(var(--box-size) * 24);
+    box-shadow: 0 0 0 0.5em rgb(113, 47, 47),
+    0 0 0.5em 0.5em rgb(0, 0, 0, .5);
 }
 
 .tabuleiro div {
-    border: 1px solid black;
+    border: .1px solid black;
 }
 
 .cima, .baixo, .esquerda, .direita {
@@ -156,6 +167,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: calc(var(--box-size) * 2);
     height: calc(var(--box-size) * 2);
 }
@@ -202,12 +214,12 @@
 }
 
 .nome-cidade {
-    font-size: .75rem;
+    font-size: .5rem;
     z-index: 1;
 }
 
 .preco-cidade {
-    font-size: .75rem;
+    font-size: .5rem;
     font-weight: bold;
 }
 
@@ -222,9 +234,15 @@
     justify-content: center;
 }
 
-.rodaDado{
+div .rodaDado{
     display: flex;
     justify-content: space-around;
+    border: 0 solid transparent;
+}
+
+.rodaDado img {
+    width: calc(var(--box-size) * 1.5);
+    height: calc(var(--box-size) * 1.5);
 }
 
 p{
