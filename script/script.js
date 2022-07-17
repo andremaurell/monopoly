@@ -186,14 +186,14 @@ class Cidade extends Espaco {
         let nome = document.createElement('p');
         nome.classList.add('nome-cidade');
         nome.innerHTML = this.nome;
-        this.elemento.appendChild(nome);
+        this.elemento.getElementsByClassName('informacoes')[0].appendChild(nome);
     }
 
     mostraPreco() {
         let preco = document.createElement('p');
         preco.classList.add('preco-cidade');
         preco.innerHTML = `R$ ${this.preco}`;
-        this.elemento.appendChild(preco);
+        this.elemento.getElementsByClassName('informacoes')[0].appendChild(preco);
     }
 }
 
