@@ -1,26 +1,28 @@
-window.dados = document.getElementsByClassName("dado");
 window.dado = 0;
 //cria o dado
-function roll(){
-    window.dados.forEach(dado => {
+document.getElementById("roll").addEventListener("click", roll);
+let dados = document.querySelectorAll("img");
+
+function sorteiaDado() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+function roll() {
+    let somaDosDados = 0;
+    dados.forEach(dado => {
         dado.classList.add('shake');
     });
     setTimeout(function(){
-        window.dados.forEach(dado => {
+        dados.forEach(dado => {
             dado.classList.remove('shake');
+            let valorDado = sorteiaDado();
+            dado.src = `../monopoly/img/dice-0${valorDado}.svg`;
+            somaDosDados += valorDado;
         });
-        let dieOneValue = Math.floor(Math.random()*6) + 1;
-        let dieTwoValue = Math.floor(Math.random()*6) + 1;
-        document.getElementById("dado-1").src = `monopoly/img/dice-0${dieOneValue}.svg`;
-        document.getElementById("dado-2").src = `monopoly/img/dice-0${dieTwoValue}.svg`; 
-        let somaDosDados = ((dieOneValue) + (dieTwoValue));
         document.getElementById("total").innerHTML = somaDosDados; //declaro a variavel dado pra utilizar ela no codigo inteiro
-        window.dado = somaDosDados;
-        return somaDosDados;
-    },
-    1000
-    );
+    }, 1000);
 }
+
 class Jogador {
     constructor(id, nome, cor) {
         this.nome = nome;
@@ -102,27 +104,27 @@ class Tabuleiro {
         this.espacos['38'] = new Cidade(38, 'Natal', 'azul-escuro', 350, 200, 35, 175, 500, 1100, 1300, 1500, 175);
         this.espacos['39'] = new Imposto(39, 'Taxa de Luxúria', 200);
         this.espacos['40'] = new Cidade(40, 'Ijuí', 'azul-escuro', 400, 200, 50, 200, 600, 1400, 1700, 2000, 200);
+        this.vez = 0;
+        this.criaJogadores();
         this.iniciarJogo();
     }
 
-    iniciarJogo() {
+    criaJogadores() {
         for (let i = 0; i < this.numeroDeJogadores; i++) {
-            this.jogadores.push(new Jogador(i + 1, `Jogador${i+1}`, Tabuleiro.cores[i]));
-        }
-        this.jogadores.forEach(jogador => {
-            jogador.adicionaJogadorNoEspaco(this.espacos['1']);
-        }
-        );
-
-        for (let i = 0; i < 10; i++) {
-            this.jogadores.forEach(jogador => {
-                this.moverJogador(jogador, dado);
-            }
-            );
+            this.jogadores.push(new Jogador(i + 1, `Jogador${i + 1}`, Tabuleiro.cores[i]));
         }
     }
+
+    iniciarJogo() {
+        this.jogadores.forEach(jogador => {
+            let quemJoga = this.jogadores[this.vez]
+            console.log(`É a vez de ${quemJoga.nome}`);
+            //quemJoga.joga(this);
+            this.vez = (this.vez + 1) % this.numeroDeJogadores;
+        });
+    }
+    
     moverJogador(jogador, dado) {
-        console.log(dado);
         let posicao = jogador.espaco.id + dado;
         if (posicao >= 40) {
             posicao -= 40;
