@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/monopoly/css/reset.css">
-    <link rel="stylesheet" href="/monopoly/css/style.css">
+    <link rel="stylesheet" href="/github/monopoly/css/reset.css">
+    <link rel="stylesheet" href="/github/monopoly/css/style.css">
     <title>Monopoly</title>
 </head>
 
 <body>
     <div class="tabuleiro">
+        <div class="container">
+            <div class="rodaDado">
+                <img src="/github/monopoly/img/dice-01.svg" class="dado" id="dado-1">
+                <img src="/github/monopoly/img/dice-02.svg" class="dado" id="dado-2">
+            </div>
+            <p id="total"></p>
+            <button id="roll">ROLL</button>
+        </div>
         <div class="especial inicio" id="1"></div>
         <div class="baixo">
             <div class="normal cidadeM 1" id="2"></div>
@@ -38,9 +46,7 @@
         </div>
         <div class="especial estacionamento" id="21"></div>
         <div class="cima">
-            <div class="normal cidadeV 1" id="22">
-                <img src="" alt="">
-            </div>
+            <div class="normal cidadeV 1" id="22"></div>
             <div class="normal sorte 2" id="23"></div>
             <div class="normal cidadeV 2" id="24"></div>
             <div class="normal cidadeV 3" id="25"></div>
@@ -63,15 +69,7 @@
             <div class="normal cidadeAE 2" id="40"></div>
         </div>
     </div>
-    <div class="container">
-    <div class="rodaDado">
-            <img src="/monopoly/img/dice-01.svg" class="dado" id="dado-1">
-            <img src="/monopoly/img/dice-02.svg" class="dado" id="dado-2">
-    </div>
-    <p id="total"></p>
-    <button onclick="roll()">ROLL</button>
-</div>
-    <script src="/monopoly/script/script.js"></script>
+    <script src="/github/monopoly/script/script.js"></script>
 </body>
 
 </html>
