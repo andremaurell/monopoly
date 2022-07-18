@@ -27,7 +27,7 @@ body {
 }
 
 .cima, .baixo, .esquerda, .direita {
-    background-color: rgb(223, 149, 149);
+    background-color: #d5eadb;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,6 +65,10 @@ body {
     grid-column: 22 / span 3;
     grid-row: 4 / span 18;
     flex-direction: column;
+}
+
+div .especial {
+    border: 0 solid transparent;
 }
 
 .normal, .especial {
@@ -211,6 +215,8 @@ body {
 .jogador {
     width: 10px;
     height: 10px;
+    z-index: 100;
+    position: absolute;
 }
 
 .nome-cidade {
@@ -280,4 +286,8 @@ button:focus{
     100%{
         transform: rotate(8deg)
     }
+}
+
+#roll {
+    display: none;
 }
