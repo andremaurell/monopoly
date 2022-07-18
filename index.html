@@ -13,9 +13,9 @@
 <body>
     <div class="tabuleiro">
         <div class="container">
-            <div class="rodaDado">
-                <img src="/monopoly/img/dice-01.svg" class="dado" id="dado-1">
-                <img src="/monopoly/img/dice-02.svg" class="dado" id="dado-2">
+            <button id="iniciar-jogo">Iniciar jogo</button>
+            <p id="quem-joga"></p>
+            <div class="rodaDado" id="dados">
             </div>
             <p id="total"></p>
             <button id="roll">Jogar dados</button>
@@ -24,7 +24,6 @@
         <div class="baixo">
             <div class="normal cidade marrom 1" id="2">
                 <div class="predios"></div>
-                <div class="informacoes"></div>
                 <div class="informacoes"></div>
             </div>
             <div class="normal cofre 1" id="3"></div>
@@ -136,7 +135,18 @@
             </div>
         </div>
     </div>
-    <script src="/monopoly/script/script.js"></script>
+    <script type="module" src="/monopoly/script/cidade.js"></script>
+    <script type="module" src="/monopoly/script/cofre.js"></script>
+    <script type="module" src="/monopoly/script/companhia.js"></script>
+    <script type="module" src="/monopoly/script/dado.js"></script>
+    <script type="module" src="/monopoly/script/espaco.js"></script>
+    <script type="module" src="/monopoly/script/especial.js"></script>
+    <script type="module" src="/monopoly/script/imposto.js"></script>
+    <script type="module" src="/monopoly/script/jogador.js"></script>
+    <script type="module" src="/monopoly/script/sorte.js"></script>
+    <script type="module" src="/monopoly/script/tabuleiro.js"></script>
+    <script type="module" src="/monopoly/script/transporte.js"></script>
+    <script type="module" src="/monopoly/script/script.js"></script>
 </body>
 
 </html>
