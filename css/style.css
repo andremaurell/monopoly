@@ -6,10 +6,12 @@
 
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100vw;
     height: 100vh;
+    
 }
 
 .tabuleiro {
@@ -179,6 +181,7 @@ div .especial {
 .tabuleiro .especial {
     width: calc(3*(var(--box-size)));
     height: calc(3*(var(--box-size)));
+    color: transparent;
 }
 
 .estacionamento {
@@ -204,6 +207,36 @@ div .especial {
     grid-row: 1 / span 3;
 }
 
+.especial:hover {
+    background-image: none;
+    background: #ffffff;
+    border: 1px solid #080707;
+    border-radius:8px;
+    color: black;
+    transform: scale(1.1);
+    padding: 8px;
+    box-shadow: 0 0 0.5em 0.5em rgb(0, 0, 0, .5);
+}
+
+.especial:hover .jogador {
+    display:none;
+}
+
+.especial p{
+    font-size: 10px;
+}
+
+.especial, .normal {
+    position: relative;
+}
+
+#jogadorjogador2 {
+    position: absolute;
+    top: 15px;
+}
+
+
+
 .inicio {
     background-color: #dd4c4c;
     background-image: url(../img/inicio.png);
@@ -216,6 +249,7 @@ div .especial {
     width: 10px;
     height: 10px;
     z-index: 100;
+    border-radius: 50%;
     position: absolute;
 }
 
