@@ -20,7 +20,7 @@ export default class Dado {
                 let dado = document.getElementById("dado-" + (i + 1))
                 console.log(dado);
                 dado.classList.remove("shake");
-                dado.src = `../img/dice-0${dados[i]}.svg`;
+                dado.src = `../monopoly/img/dice-0${dados[i]}.svg`;
             }
         }, 1000);
     }
