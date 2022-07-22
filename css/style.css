@@ -28,6 +28,14 @@ body {
     border: .1px solid black;
 }
 
+.centro {
+    background-image: url(../img/centrojogo.jpeg);
+    background-size: cover;
+    grid-column: 4 / span 18;
+    grid-row: 4 / span 18;
+}
+
+
 .cima, .baixo, .esquerda, .direita {
     background-color: #d5eadb;
     display: flex;
@@ -209,13 +217,17 @@ div .especial {
 
 .especial:hover {
     background-image: none;
-    background: #ffffff;
-    border: 1px solid #080707;
+    background: #f7bcbc;
+    border: 9px solid transparent;
     border-radius:8px;
     color: black;
     transform: scale(1.1);
-    padding: 8px;
+    padding: 0px;
     box-shadow: 0 0 0.5em 0.5em rgb(0, 0, 0, .5);
+    border-image-source: url('../img/borda2.png');
+    border-image-slice: 11;
+    border-image-repeat: repeat;
+    z-index: 1;
 }
 
 .especial:hover .jogador {
@@ -233,6 +245,33 @@ div .especial {
 #jogadorjogador2 {
     position: absolute;
     top: 15px;
+}
+#jogadorjogador3 {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+}
+#jogadorjogador4 {
+    position: absolute;
+    left: 10px;
+}
+#jogadorjogador5 {
+    position: absolute;
+    bottom: 15px;
+}
+#jogadorjogador6 {
+    position: absolute;
+    bottom: 15px;
+    left: 10px;
+}
+#jogadorjogador7 {
+    position: absolute;
+    left: 20px;
+}
+#jogadorjogador8 {
+    position: absolute;
+    top: 15px;
+    left: 20px;
 }
 
 
@@ -264,14 +303,16 @@ div .especial {
 }
 
 .container {
-    width: calc(var(--box-size) * 18);
-    height: calc(var(--box-size) * 18);
-    grid-column: 4 / span 18;
-    grid-row: 4 / span 18;
+    width: calc(var(--box-size) * 10);
+    height: calc(var(--box-size) * 10);
+    grid-column: 8 / span 18;
+    grid-row: 14 / span 18;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
+    
 }
 
 div .rodaDado{
