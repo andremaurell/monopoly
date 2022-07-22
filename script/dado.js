@@ -5,7 +5,7 @@ export default class Dado {
             let dado = document.createElement('img');
             dado.classList.add('dado');
             dado.id = 'dado-' + (i + 1);
-            dado.src = `../img/dice-01.svg`;
+            dado.src = `../monopoly/img/dice-01.svg`;
             dados.appendChild(dado);
         }
     }
