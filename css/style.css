@@ -32,7 +32,7 @@ body {
 }
 
 .centro {
-    background-image: url(../img/centrojogo.jpeg);
+    background-image: url(../monopoly/img/centrojogo.jpeg);
     background-size: cover;
     grid-column: 4 / span 18;
     grid-row: 4 / span 18;
@@ -196,7 +196,7 @@ div .especial {
 }
 
 .estacionamento {
-    background-image: url(../img/estacionamento.png);
+    background-image: url(../monopoly/img/estacionamento.png);
     background-size: contain;
     grid-column: 1 / span 3;
     grid-row: 1 / span 3;
@@ -204,7 +204,7 @@ div .especial {
 
 .cadeia {
     background-color: #dd4c4c;
-    background-image: url(../img/cadeia.png);
+    background-image: url(../monopoly/img/cadeia.png);
     background-size: contain;
     grid-column: 1 / span 3;
     grid-row: 22 / span 3;
@@ -212,7 +212,7 @@ div .especial {
 
 .vaipracadeia {
     background-color: #dd4c4c;
-    background-image: url(../img/vaipracadeia.png);
+    background-image: url(../monopoly/img/vaipracadeia.png);
     background-size: contain;
     grid-column: 22/ span 3;
     grid-row: 1 / span 3;
@@ -227,7 +227,7 @@ div .especial {
     transform: scale(1.1);
     padding: 0px;
     box-shadow: 0 0 0.5em 0.5em rgb(0, 0, 0, .5);
-    border-image-source: url('../img/borda2.png');
+    border-image-source: url('../monopoly/img/borda2.png');
     border-image-slice: 11;
     border-image-repeat: repeat;
     z-index: 1;
@@ -281,7 +281,7 @@ div .especial {
 
 .inicio {
     background-color: #dd4c4c;
-    background-image: url(../img/inicio.png);
+    background-image: url(../monopoly/img/inicio.png);
     background-size: contain;
     grid-column: 22 / span 3;
     grid-row: 22 / span 3;
