@@ -27,6 +27,9 @@ body {
 .tabuleiro div {
     border: .1px solid black;
 }
+.tabuleiro .container {
+    border: none;
+}
 
 .centro {
     background-image: url(../img/centrojogo.jpeg);
@@ -312,6 +315,7 @@ div .especial {
     align-items: center;
     justify-content: center;
     z-index: 1;
+    border: none;
     
 }
 
