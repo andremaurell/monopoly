@@ -34,7 +34,7 @@ document.getElementById("iniciar-jogo").addEventListener("click", () => {
 function iniciarJogo() {
     numeroDeJogadores = document.getElementById("quantidade-de-jogadores").value;
     numeroDeDados = document.getElementById("quantidade-de-dados").value;
-    if ((0 < numeroDeDados <= 2) || (1 < numeroDeJogadores <= 8) {
+    if ((numeroDeDados > 0 && numeroDeDados <= 2) && (numeroDeJogadores > 1 && numeroDeJogadores <= 8) {
         console.log("Iniciando jogo...");
         document.getElementById("painel-de-controle").style.display = "none";
         document.getElementById("tabuleiro").style.display = "grid";
