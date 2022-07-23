@@ -1,0 +1,51 @@
+.jogador {
+    width: var(--diametro-jogador);
+    height: var(--diametro-jogador);
+    z-index: 100;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.jogadores {
+    border: none;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 100;
+}
+
+.jogador:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+
+.jogador:nth-child(2) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(3) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 2);
+}
+
+.jogador:nth-child(4) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 3);
+}
+
+.jogador:nth-child(5) {
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(6) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(7) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 2);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(8) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 3);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}

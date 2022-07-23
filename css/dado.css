@@ -1,0 +1,30 @@
+div .rodaDado{
+    display: flex;
+    justify-content: space-around;
+    border: 0 solid transparent;
+}
+
+.rodaDado img {
+    width: calc(var(--box-size) * 1.5);
+    height: calc(var(--box-size) * 1.5);
+}
+
+.shake{
+    animation: shake 0.5s infinite
+}
+
+@keyframes shake{
+    0%{ 
+    transform: rotate(8deg)
+    }
+    50%{
+        transform: rotate(-8deg);
+    }
+    100%{
+        transform: rotate(8deg)
+    }
+}
+
+#roll {
+    display: none;
+}

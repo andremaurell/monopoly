@@ -1,0 +1,53 @@
+.nome-cidade {
+    font-size: .5rem;
+    z-index: 1;
+}
+
+.preco-cidade {
+    font-size: .5rem;
+    font-weight: bold;
+}
+
+.cima .predios, .baixo .predios {
+    background-color: rgb(101, 64, 64);
+    width: calc(var(--box-size) * 2);
+    height: calc(var(--box-size) * 1);
+}
+
+.esquerda .predios, .direita .predios {
+    background-color: rgb(101, 64, 64);
+    width: calc(var(--box-size) * 1);
+    height: calc(var(--box-size) * 2);
+}
+
+.marrom .predios {
+    background-color: rgb(90, 58, 40);
+}
+
+.azul-celeste .predios {
+    background-color: rgb(106, 223, 209);
+}
+
+.rosa .predios {
+    background-color: rgb(255, 0, 255);
+}
+
+.laranja .predios {
+    background-color: rgb(255, 165, 0);
+}
+
+.vermelho .predios {
+    background-color: rgb(255, 0, 0);
+}
+
+.amarelo .predios {
+    background-color: rgb(255, 255, 0);
+}
+
+.verde .predios {
+    background-color: rgb(2, 143, 2);
+}
+
+.azul .predios {
+    background-color: rgb(0, 0, 255);
+}
