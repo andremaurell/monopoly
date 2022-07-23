@@ -4,5 +4,6 @@ export default class Espaco {
         this.tipo = tipo;
         this.jogadores = []; // Array de jogadores que estão no espaço
         this.elemento = document.getElementById(id);
+        console.log(this.elemento);
     }
 }

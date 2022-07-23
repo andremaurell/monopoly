@@ -6,7 +6,7 @@ export default class Jogador {
         this.propriedades = [];
         this.cartas = [];
         this.numero = 0;
-        this.id = 'jogador' + id;
+        this.id = id;
         this.espaco = null;
         this.criaElemento();
     }

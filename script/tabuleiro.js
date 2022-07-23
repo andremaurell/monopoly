@@ -32,6 +32,7 @@ export default class Tabuleiro {
 
         document.getElementById("roll").addEventListener("click",
             () => {
+                document.getElementById("total").style.display = "none";
                 document.getElementById("roll").style.display = "none";
                 let valorDosDados = 0;
                 this.dados = [];
@@ -50,8 +51,9 @@ export default class Tabuleiro {
                     }
                     console.log(valorDosDados);
                     let novoEspaco = this.espacos[novaPosicao];
-                    novoEspaco.elemento.appendChild(this.quemJoga.elemento);
+                    novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(this.quemJoga.elemento);
                     this.quemJoga.espaco = novoEspaco;
+                    document.getElementById("total").style.display = "block";
                     document.getElementById("roll").style.display = "block";
                     this.vezDeQuem();
                 }, 1800);
@@ -66,7 +68,7 @@ export default class Tabuleiro {
     criaJogadores() {
         for (let i = 0; i < this.numeroDeJogadores; i++) {
             let novoJogador = new Jogador(i + 1, `Jogador${i + 1}`, Tabuleiro.cores[i])
-            this.espacos['1'].elemento.appendChild(novoJogador.elemento);
+            this.espacos['1'].elemento.getElementsByClassName('jogadores')[0].appendChild(novoJogador.elemento);
             novoJogador.espaco = this.espacos['1'];
             this.jogadores.push(novoJogador);
         }
