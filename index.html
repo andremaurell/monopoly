@@ -17,247 +17,261 @@
 </head>
 
 <body>
-    <div class="tabuleiro">
-        <div class="container">
-            <button id="iniciar-jogo">Iniciar jogo</button>
-            <p id="quem-joga"></p>
-            <div class="rodaDado" id="dados">
-            </div>
-            <p id="total"></p>
-            <button id="roll">Jogar dados</button>
+    <header>
+        <div id="painel-de-controle">
+            <p>
+                <label for="quantidade-de-jogadores">Quantas pessoas irão jogar?</label>
+                <input type="number" id="quantidade-de-jogadores" min="2" max="8" value="2">
+            </p>
+            <p>
+                <label for="quantidade-de-dados">Quantos dados haverão no jogo?</label>
+                <input type="number" id="quantidade-de-dados" min="1" max="2" value="1">
+            </p>
+            <button id="iniciar-jogo">Iniciar Jogo</button>
         </div>
-        <div class="espaco especial inicio" id="1">
-            <p>Sempre que passar aqui receba R$ 2000</p>
-            <div class="informacoes">
-                <div class="jogadores"></div>
+    </header>
+    <main>
+        <div class="tabuleiro" id="tabuleiro" style="display: none;">
+            <div class="container">
+                <p id="quem-joga"></p>
+                <div class="rodaDado" id="dados">
+                </div>
+                <p id="total"></p>
+                <button id="roll">Jogar dados</button>
             </div>
-        </div>
+            <div class="espaco especial inicio" id="1">
+                <p>Sempre que passar aqui receba R$ 2000</p>
+                <div class="informacoes">
+                    <div class="jogadores"></div>
+                </div>
+            </div>
 
-        <div class="baixo">
-            <div class="espaco normal cidade marrom 1" id="2">
-                <div class="predios"></div>
+            <div class="baixo">
+                <div class="espaco normal cidade marrom 1" id="2">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cofre 1" id="3">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade marrom 2" id="4">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal renda" id="5">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal aviao" id="6">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade azul-celeste 1" id="7">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal sorte 1" id="8">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade azul-celeste 2" id="9">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade azul-celeste 3" id="10">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="espaco especial cadeia" id="11">
+                <p>Quando o Jogador cair aqui, ficará uma rodada sem jogar</p>
                 <div class="informacoes">
                     <div class="jogadores"></div>
                 </div>
             </div>
-            <div class="espaco normal cofre 1" id="3">
+            <div class="esquerda">
+                <div class="espaco normal cidade rosa 1" id="12">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal eletrica" id="13">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade rosa 2" id="14">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade rosa 3" id="15">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal navio" id="16">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade laranja 1" id="17">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cofre 2" id="18">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade laranja 2" id="19">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade laranja 3" id="20">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="espaco especial estacionamento" id="21">
+                <p>Quando o jogador cai aqui, algo acontece.</p>
                 <div class="informacoes">
                     <div class="jogadores"></div>
                 </div>
             </div>
-            <div class="espaco normal cidade marrom 2" id="4">
-                <div class="predios"></div>
+            <div class="cima">
+                <div class="espaco normal cidade vermelho 1" id="22">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal sorte 2" id="23">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade vermelho 2" id="24">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade vermelho 3" id="25">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal trem" id="26">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade amarelo 1" id="27">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade amarelo 2" id="28">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal saneamento" id="29">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade amarelo 3" id="30">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="espaco especial vaipracadeia" id="31">
+                <p>esta carta te manda direto pro xilindró</p>
                 <div class="informacoes">
                     <div class="jogadores"></div>
                 </div>
             </div>
-            <div class="espaco normal renda" id="5">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+            <div class="direita">
+                <div class="espaco normal cidade verde 1" id="32">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="espaco normal aviao" id="6">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+                <div class="espaco normal cidade verde 2" id="33">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="espaco normal cidade azul-celeste 1" id="7">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+                <div class="espaco normal cofre 3" id="34"></div>
+                <div class="espaco normal cidade verde 3" id="35">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="espaco normal sorte 1" id="8">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+                <div class="espaco normal espacial" id="36">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="espaco normal cidade azul-celeste 2" id="9">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+                <div class="espaco normal sorte 3" id="37">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="espaco normal cidade azul-celeste 3" id="10">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
+                <div class="espaco normal cidade azul 1" id="38">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal luxuria" id="39">
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
+                </div>
+                <div class="espaco normal cidade azul 2" id="40">
+                    <div class="predios"></div>
+                    <div class="informacoes">
+                        <div class="jogadores"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="espaco especial cadeia" id="11">
-            <p>Quando o Jogador cair aqui, ficará uma rodada sem jogar</p>
-            <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-        </div>
-        <div class="esquerda">
-            <div class="espaco normal cidade rosa 1" id="12">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal eletrica" id="13">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade rosa 2" id="14">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade rosa 3" id="15">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal navio" id="16">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade laranja 1" id="17">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cofre 2" id="18">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade laranja 2" id="19">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade laranja 3" id="20">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-        </div>
-        <div class="espaco especial estacionamento" id="21">
-            <p>Quando o jogador cai aqui, algo acontece.</p>
-            <div class="informacoes">
-                <div class="jogadores"></div>
-            </div>
-        </div>
-        <div class="cima">
-            <div class="espaco normal cidade vermelho 1" id="22">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal sorte 2" id="23">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade vermelho 2" id="24">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade vermelho 3" id="25">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal trem" id="26">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade amarelo 1" id="27">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade amarelo 2" id="28">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal saneamento" id="29">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade amarelo 3" id="30">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-        </div>
-        <div class="espaco especial vaipracadeia" id="31">
-            <p>esta carta te manda direto pro xilindró</p>
-            <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-        </div>
-        <div class="direita">
-            <div class="espaco normal cidade verde 1" id="32">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade verde 2" id="33">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cofre 3" id="34"></div>
-            <div class="espaco normal cidade verde 3" id="35">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal espacial" id="36">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal sorte 3" id="37">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade azul 1" id="38">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal luxuria" id="39">
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-            <div class="espaco normal cidade azul 2" id="40">
-                <div class="predios"></div>
-                <div class="informacoes">
-                    <div class="jogadores"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </main>
     <script type="module" src="/monopoly/script/cidade.js"></script>
     <script type="module" src="/monopoly/script/cofre.js"></script>
     <script type="module" src="/monopoly/script/companhia.js"></script>
