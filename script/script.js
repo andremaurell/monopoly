@@ -35,6 +35,7 @@ function iniciarJogo() {
     numeroDeJogadores = document.getElementById("quantidade-de-jogadores").value;
     numeroDeDados = document.getElementById("quantidade-de-dados").value;
     if (numeroDeDados > 0 && numeroDeJogadores > 1) {
+        console.log("Iniciando jogo...");
         document.getElementById("painel-de-controle").style.display = "none";
         document.getElementById("tabuleiro").style.display = "grid";
         tabuleiro = new Tabuleiro(numeroDeJogadores, numeroDeDados);
