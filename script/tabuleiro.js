@@ -23,12 +23,9 @@ export default class Tabuleiro {
         this.preencheEspacos();
         this.criaJogadores();
         this.criaDados();
-
-        document.getElementById("iniciar-jogo").addEventListener("click", () => {
-            document.getElementById("iniciar-jogo").style.display = "none";
-            document.getElementById("roll").style.display = "block";
-            this.vezDeQuem();
-        });
+        document.getElementById("iniciar-jogo").style.display = "none";
+        document.getElementById("roll").style.display = "block";
+        this.vezDeQuem();
 
         document.getElementById("roll").addEventListener("click",
             () => {
