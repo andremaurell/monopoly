@@ -2,7 +2,7 @@ import Espaco from "./espaco.js";
 
 export default class Cidade extends Espaco {
     constructor(id, nome, estado, cor, preco, precoPorCasa, aluguel, aluguelUmaCasa, aluguelDuasCasas, aluguelTresCasas, aluguelQuatroCasas, aluguelHotel, hipoteca) {
-        super(id, 'Cidade');
+        super(id, 'cidade');
         this.nome = nome;
         this.estado = estado;
         this.cor = cor;
@@ -20,19 +20,5 @@ export default class Cidade extends Espaco {
         this.hotel = false;
         this.mostraNome();
         this.mostraPreco();
-    }
-
-    mostraNome() {
-        let nome = document.createElement('p');
-        nome.classList.add('nome-cidade');
-        nome.innerHTML = this.nome;
-        this.elemento.getElementsByClassName('informacoes')[0].appendChild(nome);
-    }
-
-    mostraPreco() {
-        let preco = document.createElement('p');
-        preco.classList.add('preco-cidade');
-        preco.innerHTML = `R$ ${this.preco}`;
-        this.elemento.getElementsByClassName('informacoes')[0].appendChild(preco);
     }
 }
