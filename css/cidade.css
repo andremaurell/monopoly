@@ -6,6 +6,16 @@
 .preco-cidade {
     font-size: .5rem;
     font-weight: bold;
+    color: white;
+    background-color: black;
+    padding: .15rem .25rem;
+    border-radius: .5rem;
+    border: 1px solid white;
+}
+
+.predios {
+    border: 1px solid black;
+    transform: scale(1.1);
 }
 
 .cima .predios, .baixo .predios {

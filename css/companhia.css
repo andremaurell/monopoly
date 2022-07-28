@@ -1,0 +1,19 @@
+.nome-companhia {
+    font-size: .5rem;
+    z-index: 1;
+}
+
+.preco-companhia {
+    font-size: .5rem;
+    font-weight: bold;
+}
+
+div .eletrica {
+    display: flex;
+    flex-direction: column;
+}
+
+div .eolica {
+    display: flex;
+    flex-direction: row;
+}

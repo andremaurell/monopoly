@@ -1,0 +1,10 @@
+.nome-sorte {
+    font-size: .5rem;
+    z-index: 1;
+}
+
+.preco-sorte {
+    font-size: .5rem;
+    font-weight: bold;
+}
+

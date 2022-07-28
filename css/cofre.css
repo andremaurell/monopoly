@@ -1,0 +1,19 @@
+.nome-cofre {
+    font-size: .5rem;
+    z-index: 1;
+}
+
+.preco-cofre {
+    font-size: .5rem;
+    font-weight: bold;
+}
+
+.esquerda .cofre, .direita .cofre {
+    display: flex;
+    flex-direction: column;
+}
+
+.baixo .cofre {
+    display: flex;
+    flex-direction: row;
+}

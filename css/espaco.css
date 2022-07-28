@@ -1,12 +1,10 @@
-div .especial {
-    border: none;
-}
-
 .normal, .especial {
     display: grid;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
+    border: 1px solid black;
+    text-transform: uppercase;
 }
 
 .cima .normal, .baixo .normal {
@@ -134,4 +132,14 @@ div .especial {
 
 div .jogadores, div .informacoes {
     border: none;
+}
+
+.esquerda .carta, .direita .carta {
+    display: flex;
+    flex-direction: column;
+}
+
+.baixo .carta, .cima .carta {
+    display: flex;
+    flex-direction: row;
 }
