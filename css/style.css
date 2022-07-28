@@ -8,12 +8,13 @@
 
 body {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 100vw;
     height: 100vh;
 }
+
 
 p{
     font-size: 16px;
@@ -36,7 +37,7 @@ button:focus{
     border:1px solid rgb(105, 58, 58);
 }
 
-#painel-de-controle {
+#antes-do-inicio {
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -52,3 +52,40 @@
     top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 3);
     left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
 }
+
+#cartoes-jogadores {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.cartao-jogador {
+    font-size: .6em;
+    width: 6rem;
+    height: 8rem;
+    border-radius: 1em;
+    margin: .2em;
+    padding: 1em;
+    border: 1px solid black;
+    box-shadow: 0 0 0.2em 0.01em rgb(0, 0, 0, .5);
+}
+
+.cartao-nome-jogador {
+    font-size: .8em;
+    text-align: center;
+    width: 100%;
+    padding: .3em;
+    border: 1.5px solid black;
+    color: white;
+}
+
+.cartao-dinheiro-jogador p {
+    font-size: 1em;
+}
+
+.cartao-dinheiro-jogador p::before {
+    content: 'Saldo: ';
+}
