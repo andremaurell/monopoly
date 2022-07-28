@@ -4,8 +4,6 @@
     grid-template-rows: repeat(24, 1fr);
     width: calc(var(--box-size) * 24);
     height: calc(var(--box-size) * 24);
-    box-shadow: 0 0 0 0.5em rgb(113, 47, 47),
-    0 0 0.5em 0.5em rgb(0, 0, 0, .5);
     margin: 1em;
 }
 

@@ -1,9 +1,10 @@
 :root {
     font-size: 1rem;
-    --box-size: 1.55em;
+    --box-size: 1.53em;
     --diametro-jogador: .625em;
     --gap-entre-jogadores: .06em;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -11,10 +12,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
 }
-
 
 p{
     font-size: 16px;
@@ -37,11 +35,22 @@ button:focus{
     border:1px solid rgb(105, 58, 58);
 }
 
+#painel-de-controle {
+    display: flex;
+    flex-direction: row;
+}
+
 #antes-do-inicio {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 50vw;
-    height: 30vh;
+}
+
+#durante-jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
 }
