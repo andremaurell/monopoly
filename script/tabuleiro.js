@@ -46,10 +46,11 @@ export default class Tabuleiro {
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
-                    console.log(valorDosDados);
                     let novoEspaco = this.espacos[novaPosicao];
                     novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(this.quemJoga.elemento);
                     this.quemJoga.espaco = novoEspaco;
+                    console.log(this.quemJoga, novaPosicao);
+                    this.opcoesDeAcao(this.quemJoga);
                     document.getElementById("total").style.display = "block";
                     document.getElementById("roll").style.display = "block";
                     this.vezDeQuem();
@@ -58,14 +59,46 @@ export default class Tabuleiro {
         );
     }
 
+    opcoesDeAcao(jogador) {
+        let espacoAtual = jogador.espaco;
+        console.log(espacoAtual)
+        if (espacoAtual.tipo == 'transporte') {
+            let transporte = espacoAtual;
+            if (transporte.dono == null) {
+                document.getElementById("comprar").style.display = "block";
+                document.getElementById("comprar").addEventListener("click",
+                    () => {
+                        transporte.comprar(jogador);
+                        document.getElementById("comprar").style.display = "none";
+                        this.opcoesDeAcao(jogador);
+                    }
+                );
+            } else if (transporte.dono != jogador) {
+                document.getElementById("pagar").style.display = "block";
+                document.getElementById("pagar").addEventListener("click",
+                    () => {
+                        transporte.pagar(jogador);
+                        document.getElementById("pagar").style.display = "none";
+                        this.opcoesDeAcao(jogador);
+                    }
+                );
+            }
+        }
+    }
+
     criaDados() {
         Dado.criarDados(this.numeroDeDados);
     }
 
     criaJogadores() {
+        let painel = document.getElementById('durante-jogo');
+        let cartoesJogadores = document.createElement('div');
+        cartoesJogadores.id = 'cartoes-jogadores';
+        painel.appendChild(cartoesJogadores);
         for (let i = 0; i < this.numeroDeJogadores; i++) {
             let novoJogador = new Jogador(i + 1, `Jogador${i + 1}`, Tabuleiro.cores[i])
             this.espacos['1'].elemento.getElementsByClassName('jogadores')[0].appendChild(novoJogador.elemento);
+            cartoesJogadores.appendChild(novoJogador.cartao);
             novoJogador.espaco = this.espacos['1'];
             this.jogadores.push(novoJogador);
         }

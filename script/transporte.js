@@ -10,4 +10,15 @@ export default class Transporte extends Espaco {
         this.mostraNome();
         this.mostraPreco();
     }
+
+    comprar(jogador) {
+        this.dono = jogador;
+    }
+
+    pagar(jogador) {
+        let valorAluguel = this.aluguel * (2 ** (this.dono.numeroDeTransportes - 1));
+        jogador.dinheiro -= valorAluguel;
+        this.dono.dinheiro += valorAluguel;
+    }
+
 }

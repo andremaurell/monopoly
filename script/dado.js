@@ -11,14 +11,12 @@ export default class Dado {
     }
     
     static rolar(dados) {
-        for (let i = 0; i < dados.length; i++) {
-            console.log(dados[i]);
+        for (let i = 0; i < dados.length; i++) {    
             document.getElementById("dado-" + (i + 1)).classList.add("shake");
         }
         setTimeout(function () {
             for (let i = 0; i < dados.length; i++) {
                 let dado = document.getElementById("dado-" + (i + 1))
-                console.log(dado);
                 dado.classList.remove("shake");
                 dado.src = `../monopoly/img/dice-0${dados[i]}.svg`;
             }
