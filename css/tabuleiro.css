@@ -8,8 +8,8 @@
 }
 
 .container {
-    background-image: url(../img/centrojogo.jpeg);
-    background-size: cover;
+    /* background-image: url(../img/centrojogo.jpeg);
+    background-size: cover; */
     width: calc(var(--box-size) * 18);
     height: calc(var(--box-size) * 18);
     grid-column: 4 / span 18;
@@ -69,4 +69,12 @@
     grid-column: 22 / span 3;
     grid-row: 4 / span 18;
     flex-direction: column;
+}
+
+#comprar {
+    display: none;
+}
+
+#pagar {
+    display: none;
 }

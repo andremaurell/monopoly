@@ -14,17 +14,20 @@
 }
 
 .predios {
+    display: flex;
     border: 1px solid black;
     transform: scale(1.1);
 }
 
 .cima .predios, .baixo .predios {
+    flex-direction: row;
     background-color: rgb(101, 64, 64);
     width: calc(var(--box-size) * 2);
     height: calc(var(--box-size) * 1);
 }
 
 .esquerda .predios, .direita .predios {
+    flex-direction: column;
     background-color: rgb(101, 64, 64);
     width: calc(var(--box-size) * 1);
     height: calc(var(--box-size) * 2);
@@ -60,4 +63,13 @@
 
 .azul .predios {
     background-color: rgb(0, 0, 255);
+}
+
+.casa, .hotel {
+    width: var(--diametro-jogador);
+    height: var(--diametro-jogador);
+    z-index: 100;
+    margin: .15em;
+    border: 1px solid black;
+    box-shadow: 0 0 0.5em 0.05em rgb(0, 0, 0, .5);
 }
