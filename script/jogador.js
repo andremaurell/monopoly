@@ -7,6 +7,7 @@ export default class Jogador {
         this.cartas = [];
         this.numero = 0;
         this.numeroDeTransportes = 0;
+        this.numeroDeCompanhias = 0;
         this.id = id;
         this.espaco = null;
         this.criaElemento();
@@ -41,5 +42,34 @@ export default class Jogador {
 
         this.cartao.appendChild(nome);
         this.cartao.appendChild(dinheiro);
+    }
+
+    sacar(valor) {
+        this.dinheiro -= valor;
+        this.atualizaCartao();
+    }
+
+    depositar(valor) {
+        this.dinheiro += valor;
+        this.atualizaCartao();
+    }
+
+    transferir(valor, jogador) {
+        this.sacar(valor);
+        jogador.depositar(valor);
+    }
+
+    atualizaCartao() {
+        let dinheiroParagrafo = this.cartao.getElementsByClassName('cartao-dinheiro-jogador')[0].getElementsByTagName('p')[0];
+        dinheiroParagrafo.innerHTML = this.dinheiro;
+    }
+
+    possuiSaldo(valor) {
+        return this.dinheiro >= valor;
+    }
+
+    possuiCidadesDaCor(cor) {
+        let quantidadeTotal = (cor == 'marrom' || cor == 'azul') ? 2 : 3; 
+        return this.propriedades.filter(propriedade => (propriedade.tipo === 'cidade' && propriedade.cor === cor)).length == quantidadeTotal;
     }
 }

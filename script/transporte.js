@@ -12,13 +12,20 @@ export default class Transporte extends Espaco {
     }
 
     comprar(jogador) {
-        this.dono = jogador;
+        if (jogador.possuiSaldo(this.preco)) {
+            jogador.sacar(this.preco);
+            jogador.propriedades.push(this);
+            this.dono = jogador;
+        }
+        else {
+            alert("Você não possui dinheiro suficiente para comprar este transporte!");
+        }
     }
 
     pagar(jogador) {
         let valorAluguel = this.aluguel * (2 ** (this.dono.numeroDeTransportes - 1));
-        jogador.dinheiro -= valorAluguel;
-        this.dono.dinheiro += valorAluguel;
+        jogador.sacar(valorAluguel);
+        this.dono.depositar(valorAluguel);
     }
 
 }

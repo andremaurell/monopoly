@@ -50,7 +50,7 @@ export default class Tabuleiro {
                     novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(this.quemJoga.elemento);
                     this.quemJoga.espaco = novoEspaco;
                     console.log(this.quemJoga, novaPosicao);
-                    this.opcoesDeAcao(this.quemJoga);
+                    this.opcoesDeAcao(this.quemJoga, valorDosDados);
                     document.getElementById("total").style.display = "block";
                     document.getElementById("roll").style.display = "block";
                     this.vezDeQuem();
@@ -59,7 +59,7 @@ export default class Tabuleiro {
         );
     }
 
-    opcoesDeAcao(jogador) {
+    opcoesDeAcao(jogador, valorDosDados) {
         let espacoAtual = jogador.espaco;
         console.log(espacoAtual)
         if (espacoAtual.tipo == 'transporte') {
@@ -67,21 +67,94 @@ export default class Tabuleiro {
             if (transporte.dono == null) {
                 document.getElementById("comprar").style.display = "block";
                 document.getElementById("comprar").addEventListener("click",
-                    () => {
+                    function comprar() {
                         transporte.comprar(jogador);
                         document.getElementById("comprar").style.display = "none";
-                        this.opcoesDeAcao(jogador);
+                        
+                        document.getElementById("comprar").removeEventListener("click", comprar);
                     }
                 );
             } else if (transporte.dono != jogador) {
                 document.getElementById("pagar").style.display = "block";
                 document.getElementById("pagar").addEventListener("click",
-                    () => {
+                    function pagar() {
                         transporte.pagar(jogador);
                         document.getElementById("pagar").style.display = "none";
-                        this.opcoesDeAcao(jogador);
+                        
+                        document.getElementById("pagar").removeEventListener("click", pagar);
                     }
                 );
+            }
+        } else if (espacoAtual.tipo == 'companhia') {
+            let companhia = espacoAtual;
+            if (companhia.dono == null) {
+                document.getElementById("comprar").style.display = "block";
+                document.getElementById("comprar").addEventListener("click",
+                    function comprar() {
+                        companhia.comprar(jogador);
+                        document.getElementById("comprar").style.display = "none";
+                        
+                        document.getElementById("comprar").removeEventListener("click", comprar);
+                    }
+                );
+            } else if (companhia.dono != jogador) {
+                document.getElementById("pagar").style.display = "block";
+                document.getElementById("pagar").addEventListener("click",
+                    function pagar() {
+                        companhia.pagar(jogador, valorDosDados);
+                        document.getElementById("pagar").style.display = "none";
+                        
+                        document.getElementById("pagar").removeEventListener("click", pagar);
+                    }
+                );
+            }
+        } else if (espacoAtual.tipo == 'sorte') {
+            let sorte = espacoAtual;
+            // sorte.acao(jogador);
+        } else if (espacoAtual.tipo == 'cofre') {
+            let cofre = espacoAtual;
+            // cofre.acao(jogador);
+        } else if (espacoAtual.tipo == 'especial') {
+            let especial = espacoAtual;
+            // especial.acao(jogador);
+        } else if (espacoAtual.tipo == 'imposto') {
+            let imposto = espacoAtual;
+            jogador.sacar(imposto.preco);
+        } else if (espacoAtual.tipo == 'cidade') {
+            let cidade = espacoAtual;
+            if (cidade.dono == null) {
+                document.getElementById("comprar").style.display = "block";
+                document.getElementById("comprar").addEventListener("click",
+                    function comprar() {
+                        cidade.comprar(jogador);
+                        document.getElementById("comprar").style.display = "none";
+                        
+                        document.getElementById("comprar").removeEventListener("click", comprar);
+                    }
+                );
+            } else if (cidade.dono != jogador) {
+                document.getElementById("pagar").style.display = "block";
+                document.getElementById("pagar").addEventListener("click",
+                    function pagar() {
+                        cidade.pagar(jogador);
+                        document.getElementById("pagar").style.display = "none";
+                        
+                        document.getElementById("pagar").removeEventListener("click", pagar);
+                    }
+                );
+            } else if (cidade.dono == jogador) {
+                // Se jogador possui todas cidades da mesma cor de cidade, poderá construir casas nela
+                if (jogador.possuiCidadesDaCor(cidade.cor)) {
+                    document.getElementById("construir").style.display = "block";
+                    document.getElementById("construir").addEventListener("click",
+                        function construir() {
+                            cidade.construir(jogador);
+                            document.getElementById("construir").style.display = "none";
+                            
+                            document.getElementById("construir").removeEventListener("click", construir);
+                        }
+                    );
+                }
             }
         }
     }
@@ -132,7 +205,7 @@ export default class Tabuleiro {
         this.espacos['3'] = new Cofre(3);
         this.espacos['4'] = new Cidade(4, 'Pelotas', 'marrom', 60, 50, 4, 20, 60, 180, 320, 450, 30);
         this.espacos['5'] = new Imposto(5, 'Imposto de Renda', 200);
-        this.espacos['6'] = new Transporte(6, 'Trem', 200);
+        this.espacos['6'] = new Transporte(6, 'Trem', 200, 25);
         this.espacos['7'] = new Cidade(7, 'Porto Alegre', 'azul-claro', 100, 50, 6, 30, 90, 270, 400, 550, 50);
         this.espacos['8'] = new Sorte(8);
         this.espacos['9'] = new Cidade(9, 'São Paulo', 'azul-claro', 100, 50, 6, 30, 90, 270, 400, 550, 50);
@@ -142,7 +215,7 @@ export default class Tabuleiro {
         this.espacos['13'] = new Companhia(13, 'Elétrica', 150);
         this.espacos['14'] = new Cidade(14, 'São Gonçalo', 'rosa', 140, 100, 10, 50, 150, 450, 625, 750, 70);
         this.espacos['15'] = new Cidade(15, 'Salvador', 'rosa', 160, 100, 12, 60, 180, 500, 700, 900, 80);
-        this.espacos['16'] = new Transporte(16, 'Avião', 200);
+        this.espacos['16'] = new Transporte(16, 'Avião', 200, 25);
         this.espacos['17'] = new Cidade(17, 'Vitória', 'laranja', 180, 100, 14, 70, 200, 550, 750, 950, 90);
         this.espacos['18'] = new Cofre(18);
         this.espacos['19'] = new Cidade(19, 'Belo Horizonte', 'laranja', 180, 100, 14, 70, 200, 550, 750, 950, 90);
@@ -152,7 +225,7 @@ export default class Tabuleiro {
         this.espacos['23'] = new Sorte(23);
         this.espacos['24'] = new Cidade(24, 'Porto Velho', 'vermelho', 220, 150, 18, 90, 250, 700, 875, 1050, 110);
         this.espacos['25'] = new Cidade(25, 'Maceió', 'vermelho', 240, 150, 20, 100, 300, 750, 925, 1100, 120);
-        this.espacos['26'] = new Transporte(26, 'Navio', 200);
+        this.espacos['26'] = new Transporte(26, 'Navio', 200, 25);
         this.espacos['27'] = new Cidade(27, 'Rio Branco', 'amarelo', 260, 150, 22, 110, 330, 800, 975, 1150, 130);
         this.espacos['28'] = new Cidade(28, 'Campo Grande', 'amarelo', 260, 150, 22, 110, 330, 800, 975, 1150, 130);
         this.espacos['29'] = new Companhia(29, 'Eólica', 150);
@@ -162,7 +235,7 @@ export default class Tabuleiro {
         this.espacos['33'] = new Cidade(33, 'Manaus', 'verde', 300, 200, 26, 130, 390, 900, 1100, 1275, 150);
         this.espacos['34'] = new Cofre(34);
         this.espacos['35'] = new Cidade(35, 'Florianópolis', 'verde', 320, 200, 28, 150, 450, 1000, 1200, 1400, 160);
-        this.espacos['36'] = new Transporte(36, 'Espaçonave', 200);
+        this.espacos['36'] = new Transporte(36, 'Espaçonave', 200, 25);
         this.espacos['37'] = new Sorte(37);
         this.espacos['38'] = new Cidade(38, 'Natal', 'azul-escuro', 350, 200, 35, 175, 500, 1100, 1300, 1500, 175);
         this.espacos['39'] = new Imposto(39, 'Taxa de Riqueza', 200);
