@@ -70,11 +70,3 @@
     grid-row: 4 / span 18;
     flex-direction: column;
 }
-
-#comprar {
-    display: none;
-}
-
-#pagar {
-    display: none;
-}
