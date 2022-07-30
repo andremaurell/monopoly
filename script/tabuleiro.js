@@ -19,18 +19,17 @@ export default class Tabuleiro {
         this.vez = 0;
         this.cont = 0;
         this.painel = document.getElementById('quem-joga');
+        this.botaoRolarDados = document.getElementById('roll');
         this.espacos = {};
         this.preencheEspacos();
         this.criaJogadores();
         this.criaDados();
-        document.getElementById("iniciar-jogo").style.display = "none";
-        document.getElementById("roll").style.display = "block";
         this.vezDeQuem();
 
-        document.getElementById("roll").addEventListener("click",
+        this.botaoRolarDados.addEventListener("click",
             () => {
+                this.escondeBotao(this.botaoRolarDados);
                 document.getElementById("total").style.display = "none";
-                document.getElementById("roll").style.display = "none";
                 let valorDosDados = 0;
                 this.dados = [];
                 for (let i = 0; i < this.numeroDeDados; i++) {
@@ -52,111 +51,118 @@ export default class Tabuleiro {
                     console.log(this.quemJoga, novaPosicao);
                     this.opcoesDeAcao(this.quemJoga, valorDosDados);
                     document.getElementById("total").style.display = "block";
-                    document.getElementById("roll").style.display = "block";
                     this.vezDeQuem();
                 }, 1800);
+                this.painel.innerHTML = `${this.quemJoga.nome}`;
             }
         );
     }
 
+    mostraBotao(botao) {
+        botao.style.display = "block";
+    }
+
+    escondeBotao(botao) {
+        botao.style.display = "none";
+    }
+
+    criaBotao(nome, posicao) {
+        let botao = document.createElement('button');
+        botao.innerHTML = nome;
+        botao.id = nome;
+        posicao.appendChild(botao);
+        return botao;
+    }
+
+    apagaBotao(botao) {
+        botao.remove();
+    }
+
+    apagaTodosBotoes(container) {
+        this.painel.innerHTML = '';
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+    }
+
     opcoesDeAcao(jogador, valorDosDados) {
+        let opcoesEspaco = document.getElementById("opcoes-espaco");
         let espacoAtual = jogador.espaco;
         console.log(espacoAtual)
-        if (espacoAtual.tipo == 'transporte') {
-            let transporte = espacoAtual;
-            if (transporte.dono == null) {
-                document.getElementById("comprar").style.display = "block";
-                document.getElementById("comprar").addEventListener("click",
-                    function comprar() {
-                        transporte.comprar(jogador);
-                        document.getElementById("comprar").style.display = "none";
-                        
-                        document.getElementById("comprar").removeEventListener("click", comprar);
+        if (espacoAtual.tipo == 'companhia' || espacoAtual.tipo == 'transporte' || espacoAtual.tipo == 'cidade') {
+            if (espacoAtual.dono == null) {
+                let botao = this.criaBotao('Comprar', opcoesEspaco);
+                botao.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    espacoAtual.comprar(jogador);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            } else if (espacoAtual.dono != jogador) {
+                let botao = this.criaBotao('Pagar', opcoesEspaco);
+                botao.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    espacoAtual.pagar(jogador);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            } else if (espacoAtual.dono == jogador) {
+                if (espacoAtual.tipo == 'cidade') {
+                    let botao = this.criaBotao('Construir', opcoesEspaco);
+                    botao.addEventListener("click", () => {
+                        this.apagaTodosBotoes(opcoesEspaco);
+                        espacoAtual.construir(jogador);
+                        this.mostraBotao(this.botaoRolarDados);
+                    });
+                } else if (espacoAtual.tipo == 'companhia') {
+                    let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                    botaoSkip.addEventListener("click", () => {
+                        this.apagaTodosBotoes(opcoesEspaco);
+                        this.mostraBotao(this.botaoRolarDados);
                     }
-                );
-            } else if (transporte.dono != jogador) {
-                document.getElementById("pagar").style.display = "block";
-                document.getElementById("pagar").addEventListener("click",
-                    function pagar() {
-                        transporte.pagar(jogador);
-                        document.getElementById("pagar").style.display = "none";
-                        
-                        document.getElementById("pagar").removeEventListener("click", pagar);
+                    );
+                } else if (espacoAtual.tipo == 'transporte') {
+                    let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                    botaoSkip.addEventListener("click", () => {
+                        this.apagaTodosBotoes(opcoesEspaco);
+                        this.mostraBotao(this.botaoRolarDados);
                     }
-                );
-            }
-        } else if (espacoAtual.tipo == 'companhia') {
-            let companhia = espacoAtual;
-            if (companhia.dono == null) {
-                document.getElementById("comprar").style.display = "block";
-                document.getElementById("comprar").addEventListener("click",
-                    function comprar() {
-                        companhia.comprar(jogador);
-                        document.getElementById("comprar").style.display = "none";
-                        
-                        document.getElementById("comprar").removeEventListener("click", comprar);
-                    }
-                );
-            } else if (companhia.dono != jogador) {
-                document.getElementById("pagar").style.display = "block";
-                document.getElementById("pagar").addEventListener("click",
-                    function pagar() {
-                        companhia.pagar(jogador, valorDosDados);
-                        document.getElementById("pagar").style.display = "none";
-                        
-                        document.getElementById("pagar").removeEventListener("click", pagar);
-                    }
-                );
-            }
-        } else if (espacoAtual.tipo == 'sorte') {
-            let sorte = espacoAtual;
-            // sorte.acao(jogador);
-        } else if (espacoAtual.tipo == 'cofre') {
-            let cofre = espacoAtual;
-            // cofre.acao(jogador);
-        } else if (espacoAtual.tipo == 'especial') {
-            let especial = espacoAtual;
-            // especial.acao(jogador);
-        } else if (espacoAtual.tipo == 'imposto') {
-            let imposto = espacoAtual;
-            jogador.sacar(imposto.preco);
-        } else if (espacoAtual.tipo == 'cidade') {
-            let cidade = espacoAtual;
-            if (cidade.dono == null) {
-                document.getElementById("comprar").style.display = "block";
-                document.getElementById("comprar").addEventListener("click",
-                    function comprar() {
-                        cidade.comprar(jogador);
-                        document.getElementById("comprar").style.display = "none";
-                        
-                        document.getElementById("comprar").removeEventListener("click", comprar);
-                    }
-                );
-            } else if (cidade.dono != jogador) {
-                document.getElementById("pagar").style.display = "block";
-                document.getElementById("pagar").addEventListener("click",
-                    function pagar() {
-                        cidade.pagar(jogador);
-                        document.getElementById("pagar").style.display = "none";
-                        
-                        document.getElementById("pagar").removeEventListener("click", pagar);
-                    }
-                );
-            } else if (cidade.dono == jogador) {
-                // Se jogador possui todas cidades da mesma cor de cidade, poderá construir casas nela
-                if (jogador.possuiCidadesDaCor(cidade.cor)) {
-                    document.getElementById("construir").style.display = "block";
-                    document.getElementById("construir").addEventListener("click",
-                        function construir() {
-                            cidade.construir(jogador);
-                            document.getElementById("construir").style.display = "none";
-                            
-                            document.getElementById("construir").removeEventListener("click", construir);
-                        }
                     );
                 }
             }
-        }
+        } else if (espacoAtual.tipo == 'imposto') {
+            let botao = this.criaBotao('Pagar', opcoesEspaco);
+            botao.addEventListener("click", () => {
+                this.apagaTodosBotoes(opcoesEspaco);
+                jogador.sacar(espacoAtual.preco);
+                this.mostraBotao(this.botaoRolarDados);
+            });
+        } else if (espacoAtual.tipo == 'sorte') {
+            let sorte = espacoAtual;
+            let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+        } else if (espacoAtual.tipo == 'cofre') {
+            let cofre = espacoAtual;
+            let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+        } else if (espacoAtual.tipo == 'especial') {
+            let especial = espacoAtual;
+            let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+        } 
+        
     }
 
     criaDados() {
@@ -183,7 +189,7 @@ export default class Tabuleiro {
 
     vezDeQuem() {
         this.quemJoga = this.jogadores[this.vez];
-        this.painel.innerHTML = `${this.quemJoga.nome}`;
+
         this.vez++;
         if (this.vez == this.numeroDeJogadores) {
             this.vez = 0;

@@ -5,7 +5,6 @@ export default class Companhia extends Espaco {
         super(id, 'companhia');
         this.nome = nome;
         this.preco = preco;
-        this.dono = null;
         this.mostraNome();
         this.mostraPreco();
     }

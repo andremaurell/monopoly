@@ -6,7 +6,6 @@ export default class Transporte extends Espaco {
         this.nome = nome;
         this.preco = preco;
         this.aluguel = aluguel;
-        this.dono = null;
         this.mostraNome();
         this.mostraPreco();
     }

@@ -15,7 +15,6 @@ export default class Cidade extends Espaco {
         this.aluguelQuatroCasas = aluguelQuatroCasas;
         this.aluguelHotel = aluguelHotel;
         this.hipoteca = hipoteca;
-        this.dono = null;
         this.casas = 0;
         this.hotel = false;
         this.mostraNome();
