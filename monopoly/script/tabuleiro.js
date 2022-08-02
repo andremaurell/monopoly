@@ -117,6 +117,17 @@ export default class Tabuleiro {
                         espacoAtual.construir(jogador);
                         this.mostraBotao(this.botaoRolarDados);
                     });
+                    let botaoVenda = this.criaBotao('Vender', opcoesEspaco);
+                        botaoVenda.addEventListener("click", () => {
+                            this.apagaTodosBotoes(opcoesEspaco);
+                            espacoAtual.vender(jogador);
+                            this.mostraBotao(this.botaoRolarDados);
+                        });
+                    let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                    botaoSkip.addEventListener("click", () => {
+                        this.apagaTodosBotoes(opcoesEspaco);
+                        this.mostraBotao(this.botaoRolarDados);
+                    });
                 } else if (espacoAtual.tipo == 'companhia') {
                     let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
                     botaoSkip.addEventListener("click", () => {
@@ -161,7 +172,14 @@ export default class Tabuleiro {
                     this.apagaTodosBotoes(opcoesEspaco);
                     this.mostraBotao(this.botaoRolarDados);
                 });
-        } 
+        } else if (espacoAtual.tipo == 'especial-cadeia') {
+            let cadeia = espacoAtual;
+            let botaoSkip = this.criaBotao('Pagar', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    cadeia.pagarRodada(jogador);
+                    });
+        }
         
     }
 

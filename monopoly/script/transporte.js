@@ -26,5 +26,5 @@ export default class Transporte extends Espaco {
         jogador.sacar(valorAluguel);
         this.dono.depositar(valorAluguel);
     }
-
+    
 }
