@@ -1,0 +1,148 @@
+.normal {
+    text-transform: uppercase;
+}
+
+.normal, .especial {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+.cima .normal, .baixo .normal {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: calc(var(--box-size) * 2);
+    height: calc(var(--box-size) * 3);
+}
+
+.esquerda .normal, .direita .normal {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    width: calc(var(--box-size) * 3);
+    height: calc(var(--box-size) * 2);
+}
+
+.cima .normal .predios {
+    grid-column: 1 / span 1;
+    grid-row: 3 / span 2;
+}
+
+.cima .normal .informacoes {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.baixo .normal .predios {
+    grid-column: 1 / span 1;
+    grid-row: 0 / span 2;
+}
+
+.baixo .normal .informacoes {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 2;
+}
+
+.esquerda .normal .predios {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.direita .normal .predios {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+.inicio {
+    background-color: #dd4c4c;
+    background-image: url(../img/inicio.png);
+    background-size: contain;
+    grid-column: 22 / span 3;
+    grid-row: 22 / span 3;
+}
+
+.estacionamento {
+    background-image: url(../img/estacionamento.png);
+    background-size: contain;
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 3;
+}
+
+.cadeia {
+    background-color: #dd4c4c;
+    background-image: url(../img/cadeia.png);
+    background-size: contain;
+    grid-column: 1 / span 3;
+    grid-row: 22 / span 3;
+}
+
+.vaipracadeia {
+    background-color: #dd4c4c;
+    background-image: url(../img/vaipracadeia.png);
+    background-size: contain;
+    grid-column: 22/ span 3;
+    grid-row: 1 / span 3;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: calc(var(--box-size) * 2);
+    height: calc(var(--box-size) * 2);
+}
+
+.tabuleiro .especial {
+    width: calc(3*(var(--box-size)));
+    height: calc(3*(var(--box-size)));
+    color: transparent;
+}
+
+.especial:hover {
+    background-image: none;
+    background: #f7bcbc;
+    border: 9px solid transparent;
+    border-radius:8px;
+    color: black;
+    transform: scale(1.1);
+    padding: 0px;
+    box-shadow: 0 0 0.5em 0.5em rgb(0, 0, 0, .5);
+    border-image-source: url('../img/borda2.png');
+    border-image-slice: 11;
+    border-image-repeat: repeat;
+    z-index: 1;
+}
+
+.especial:hover .jogador {
+    display:none;
+}
+
+.especial p {
+    font-size: 10px;  
+    display: none;
+}
+
+.especial:hover p {
+    display: block;
+}
+
+.informacoes {
+    position: relative;
+}
+
+div .jogadores, div .informacoes {
+    border: none;
+}
+
+.esquerda .carta, .direita .carta {
+    display: flex;
+    flex-direction: column;
+}
+
+.baixo .carta, .cima .carta {
+    display: flex;
+    flex-direction: row;
+}

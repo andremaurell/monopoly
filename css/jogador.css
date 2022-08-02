@@ -1,0 +1,92 @@
+.jogador {
+    width: var(--diametro-jogador);
+    height: var(--diametro-jogador);
+    z-index: 100;
+    border-radius: 50%;
+    position: absolute;
+    margin: .15em;
+    border: 1px solid black;
+    box-shadow: 0 0 0.5em 0.05em rgb(0, 0, 0, .5);
+}
+
+.jogadores {
+    border: none;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    z-index: 100;
+}
+
+.jogador:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+
+.jogador:nth-child(2) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(3) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 2);
+}
+
+.jogador:nth-child(4) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 3);
+}
+
+.jogador:nth-child(5) {
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(6) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(7) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 2);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+.jogador:nth-child(8) {
+    top: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 3);
+    left: calc((var(--diametro-jogador) + var(--gap-entre-jogadores)) * 1);
+}
+
+#cartoes-jogadores {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+}
+
+.cartao-jogador {
+    font-size: .6em;
+    width: 6rem;
+    height: 8rem;
+    border-radius: 1em;
+    margin: .2em;
+    padding: 1em;
+    border: 1px solid black;
+    box-shadow: 0 0 0.2em 0.01em rgb(0, 0, 0, .5);
+}
+
+.cartao-nome-jogador {
+    font-size: .8em;
+    text-align: center;
+    width: 100%;
+    padding: .3em;
+    border: 1.5px solid black;
+    color: white;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.cartao-dinheiro-jogador p {
+    font-size: 1em;
+}
+
+.cartao-dinheiro-jogador p::before {
+    content: 'Saldo: ';
+}

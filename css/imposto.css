@@ -1,0 +1,19 @@
+.nome-imposto {
+    font-size: .5rem;
+    z-index: 1;
+}
+
+.preco-imposto {
+    font-size: .5rem;
+    font-weight: bold;
+}
+
+.esquerda .imposto, .direita .imposto {
+    display: flex;
+    flex-direction: column;
+}
+
+.baixo .imposto, .cima .imposto {
+    display: flex;
+    flex-direction: row;
+}
