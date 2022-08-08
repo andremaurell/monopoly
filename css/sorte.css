@@ -13,6 +13,7 @@
 .cima .sorte{
     background-image: url(../img/sorteCima.png);
     background-size: cover;
+    background
     grid-column: 4/ span 18;
     grid-row: 4/ span 18;
     z-index: 1;
@@ -24,9 +25,8 @@
 
 .direita .sorte{
     background-image: url(../img/sorteDireita.png);
-    background-size: 65px, cover; 
-    background-position-y: 82px;
-    grid-column: 22 / span 3;
+    background-size:cover; 
+    grid-column: 4/ span 18;
     grid-row: 4 / span 18;
     z-index: 1;
     display: flex;
