@@ -63,7 +63,7 @@ export default class Cidade extends Espaco {
     }
 
     construirCasa() {
-        if (this.casas < 4) {
+        if (this.casas < 8) {
             if (this.dono.possuiSaldo(this.precoPorCasa)) {
                 this.dono.sacar(this.precoPorCasa);
                 let predios = document.getElementById(this.id).getElementsByClassName('predios')[0];
@@ -77,6 +77,15 @@ export default class Cidade extends Espaco {
             }
         } else {
             alert("Você não pode construir mais casas nesta cidade!");
+        }
+    }
+
+    vender(){
+        if (this.dono != globalThis.jogadorAtual) {
+            this.dono.depositar(this.preco/2);
+            this.dono = null;
+            this.casas = 0;
+            this.hotel = false;
         }
     }
 

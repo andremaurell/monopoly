@@ -72,4 +72,8 @@ export default class Jogador {
         let quantidadeTotal = (cor == 'marrom' || cor == 'azul') ? 2 : 3; 
         return this.propriedades.filter(propriedade => propriedade.cor == cor).length == quantidadeTotal;
     }
+    possuiCidadeDaCor(cor) {
+        let quantidade = (cor == 'marrom' || cor == 'azul') ? 1 : 3;
+        return this.propriedades.filter(propriedade => propriedade.cor == cor).length == quantidade;
+    }
 }

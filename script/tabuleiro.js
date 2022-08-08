@@ -120,12 +120,14 @@ export default class Tabuleiro {
                             this.mostraBotao(this.botaoRolarDados);
                         });
                     }
-                    let botaoVenda = this.criaBotao('Vender', opcoesEspaco);
+                    else if (jogador.possuiCidadeDaCor(espacoAtual.cor)) {
+                        let botaoVenda = this.criaBotao('Vender', opcoesEspaco);
                         botaoVenda.addEventListener("click", () => {
                             this.apagaTodosBotoes(opcoesEspaco);
                             espacoAtual.vender(jogador);
                             this.mostraBotao(this.botaoRolarDados);
                         });
+                    }
                     let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
                     botaoSkip.addEventListener("click", () => {
                         this.apagaTodosBotoes(opcoesEspaco);
