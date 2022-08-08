@@ -20,6 +20,14 @@ export default class Companhia extends Espaco {
         }
     }
 
+    vender() {
+        if (this.dono != null) {
+            this.dono.depositar(this.preco);
+            this.dono.propriedades.splice(this.dono.propriedades.indexOf(this), 1);
+            this.dono = null;
+        }
+    }
+
     pagar(jogador, valorDosDados) {
         let multiplicador = this.dono.numeroDeCompanhias > 1 ? 10 : 4;
         let valorAluguel = valorDosDados * multiplicador;

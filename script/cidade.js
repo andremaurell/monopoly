@@ -37,6 +37,17 @@ export default class Cidade extends Espaco {
         }
     }
 
+    vender() {
+        if (this.casas == 0 && this.hotel == false) {
+            this.dono.depositar(this.preco);
+            this.dono.propriedades.splice(this.dono.propriedades.indexOf(this), 1);
+            this.dono = null;
+        }
+        else {
+            alert("Você não pode vender uma cidade com casas ou hotel!");
+        }
+    }
+
     pagar(jogador) {
         if (this.casas == 0) {
             jogador.sacar(this.aluguel);
@@ -63,7 +74,7 @@ export default class Cidade extends Espaco {
     }
 
     construirCasa() {
-        if (this.casas < 8) {
+        if (this.casas < 4) {
             if (this.dono.possuiSaldo(this.precoPorCasa)) {
                 this.dono.sacar(this.precoPorCasa);
                 let predios = document.getElementById(this.id).getElementsByClassName('predios')[0];
@@ -80,12 +91,12 @@ export default class Cidade extends Espaco {
         }
     }
 
-    vender(){
-        if (this.dono != globalThis.jogadorAtual) {
-            this.dono.depositar(this.preco/2);
-            this.dono = null;
-            this.casas = 0;
-            this.hotel = false;
+    construir() {
+        if (this.casas < 4) {
+            this.construirCasa();
+        }
+        else {
+            this.construirHotel();
         }
     }
 
@@ -146,6 +157,16 @@ export default class Cidade extends Espaco {
         }
         else {
             alert("Você não possui hotel para vender!");
+        }
+    }
+
+    desconstruir() {
+        if (this.casas > 0) {
+            this.vendeCasa();
+        } else if (this.hotel) {
+            this.vendeHotel();
+        } else {
+            alert("Você não possui casas ou hotel para desconstruir!");
         }
     }
 

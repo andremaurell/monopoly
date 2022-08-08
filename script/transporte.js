@@ -21,6 +21,14 @@ export default class Transporte extends Espaco {
         }
     }
 
+    vender() {
+        if (this.dono != null) {
+            this.dono.depositar(this.preco);
+            this.dono.propriedades.splice(this.dono.propriedades.indexOf(this), 1);
+            this.dono = null;
+        }
+    }
+
     pagar(jogador) {
         let valorAluguel = this.aluguel * (2 ** (this.dono.numeroDeTransportes - 1));
         jogador.sacar(valorAluguel);
