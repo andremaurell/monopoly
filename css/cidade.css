@@ -15,6 +15,8 @@
 
 .predios {
     display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid black;
     transform: scale(1.1);
 }
@@ -69,7 +71,14 @@
     width: var(--diametro-jogador);
     height: var(--diametro-jogador);
     z-index: 100;
-    margin: .15em;
     border: 1px solid black;
     box-shadow: 0 0 0.5em 0.05em rgb(0, 0, 0, .5);
+}
+
+.casa {
+    background-color: rgb(124, 46, 46);
+}
+
+.hotel {
+    background-color: rgb(15, 54, 75);
 }
