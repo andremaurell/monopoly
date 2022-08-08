@@ -41,7 +41,8 @@ export default class Tabuleiro {
                 setTimeout(() => {
                     document.getElementById("total").innerHTML = valorDosDados;
                     let espacoAtual = this.quemJoga.espaco;
-                    let novaPosicao = espacoAtual.id + valorDosDados;
+                    // let novaPosicao = espacoAtual.id + valorDosDados;
+                    let novaPosicao = prompt("Digite o valor dos dados");
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
@@ -111,12 +112,14 @@ export default class Tabuleiro {
                 });
             } else if (espacoAtual.dono == jogador) {
                 if (espacoAtual.tipo == 'cidade') {
-                    let botao = this.criaBotao('Construir', opcoesEspaco);
-                    botao.addEventListener("click", () => {
-                        this.apagaTodosBotoes(opcoesEspaco);
-                        espacoAtual.construir(jogador);
-                        this.mostraBotao(this.botaoRolarDados);
-                    });
+                    if (jogador.possuiCidadesDaCor(espacoAtual.cor)) {
+                        let botao = this.criaBotao('Construir', opcoesEspaco);
+                        botao.addEventListener("click", () => {
+                            this.apagaTodosBotoes(opcoesEspaco);
+                            espacoAtual.construirCasa(jogador);
+                            this.mostraBotao(this.botaoRolarDados);
+                        });
+                    }
                     let botaoVenda = this.criaBotao('Vender', opcoesEspaco);
                         botaoVenda.addEventListener("click", () => {
                             this.apagaTodosBotoes(opcoesEspaco);

@@ -1,10 +1,11 @@
 import Espaco from "./espaco.js";
 
 export default class Cidade extends Espaco {
-    constructor(id, nome, estado, cor, preco, precoPorCasa, aluguel, aluguelUmaCasa, aluguelDuasCasas, aluguelTresCasas, aluguelQuatroCasas, aluguelHotel, hipoteca) {
+    // static coresCidades = {}
+
+    constructor(id, nome, cor, preco, precoPorCasa, aluguel, aluguelUmaCasa, aluguelDuasCasas, aluguelTresCasas, aluguelQuatroCasas, aluguelHotel, hipoteca) {
         super(id, 'cidade');
         this.nome = nome;
-        this.estado = estado;
         this.cor = cor;
         this.preco = preco;
         this.precoPorCasa = precoPorCasa;
@@ -19,6 +20,10 @@ export default class Cidade extends Espaco {
         this.hotel = false;
         this.mostraNome();
         this.mostraPreco();
+        // if (Cidade.coresCidades[this.cor] == undefined) {
+        //     Cidade.coresCidades[this.cor] = Array();
+        // }
+        // Cidade.coresCidades[this.cor].push(this);
     }
 
     comprar(jogador) {
@@ -76,7 +81,7 @@ export default class Cidade extends Espaco {
     }
 
     vendeCasa() {
-        if (this.casas > 0 && this.hotel == false)  {
+        if (this.casas > 0 && this.hotel == false) {
             this.dono.depositar(this.precoPorCasa);
             let predios = document.getElementById(this.id).getElementsByClassName('predios')[0];
             let casa = predios.lastChild;
@@ -90,6 +95,10 @@ export default class Cidade extends Espaco {
             alert("Você não possui casas para vender!");
         }
     }
+
+    // podeConstruirCasa(cor) {
+    //     if         
+    // }
 
     construirHotel() {
         if (this.casas == 4) {
