@@ -1,107 +1,138 @@
 import Espaco from "./espaco.js";
 
 export default class Sorte extends Espaco {
+    static embaralharCartas() {
+        for (let i = Sorte.cartas.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [Sorte.cartas[i], Sorte.cartas[j]] = [Sorte.cartas[j], Sorte.cartas[i]];
+        }
+    }
 
-    static sorteiaCarta() {
-        let carta = Math.floor(Math.random() * Sorte.cartas.length);
-        return Sorte.cartas[carta];
+    static contador = 0;
+
+    static sorteiaCarta(jogador, valorDosDados) {
+        if (Sorte.contador == Sorte.cartas.length) {
+            Sorte.contador = 0;
+        }
+        let carta = Sorte.cartas[Sorte.contador];
+        console.log(carta);
+        if (carta.valor == null && carta.posicao != null) {
+            let novaPosicao = carta.posicao;
+            if (novaPosicao < 0) {
+                novaPosicao = jogador.espaco.id + novaPosicao;
+            }
+            let passouPeloPontoDePartida = (novaPosicao < jogador.espaco.id) && (novaPosicao != 1);
+            if (passouPeloPontoDePartida) {
+                jogador.depositar(200);
+            }
+            window.tabuleiro.moverJogador(jogador, novaPosicao);
+            window.tabuleiro.opcoesDeAcao(jogador, valorDosDados);
+        } else if (carta.valor != null && carta.posicao == null) {
+            jogador.depositar(carta.valor);
+            window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
+        } else if (carta.valor == null && carta.posicao == null) {
+            console.log("nada")
+            window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
+        }
+
+        Sorte.contador++;
     }
 
     static cartas = [
         {
             id: 1,
-            preco: 100,
-            aluguel: 50,
-            descricao: "Avance para Ijuí."
+            valor: null,
+            posicao: 40,
+            descricao: `Avance para São Paulo.`
         },
         {
             id: 2,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: 1,
             descricao: "Avance para o ponto de partida e receba R$ 200."
         },
         {
             id: 3,
-            preco: 100,
-            aluguel: 50,
-            descricao: "Avance para Maceió. Se passar pelo ponto de partida, receba R$ 200."
+            valor: null,
+            posicao: 25,
+            descricao: `Avance para Goiânia. Se passar pelo ponto de partida, receba R$ 200.`
         },
         {
             id: 4,
-            preco: 100,
-            aluguel: 50,
-            descricao: "Avance para o Rio de Janeiro. Se passar pelo ponto de partida, receba R$ 200."
+            valor: null,
+            posicao: 12,
+            descricao: "Avance para Manaus. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 5,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Avance até o transporte mais próximo. Se o transporte não tiver proprietário, você poderá comprá-lo do banco. Se tiver proprietário, pague o dobro do aluguel estipulado na carta Título de Posse. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 6,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Avance até o transporte mais próximo. Se o transporte não tiver proprietário, você poderá comprá-lo do banco. Se tiver proprietário, pague o dobro do aluguel estipulado na carta Título de Posse. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 7,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: 6,
             descricao: "Avance até o transporte de trem. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 8,
-            preco: 100,
-            aluguel: 50,
+            valor: -15,
+            posicao: null,
             descricao: "Pague R$ 15 para mandar lavar o carro."
         },
         {
             id: 9,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Hora de redecorar as suas casas. Pague R$ 25 para cada casa e R$ 100 para cada hotel."
         },
         {
             id: 10,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: 31,
             descricao: "A comissão de fraude da receita federal pegou você no pulo. Vá diretamente para a cadeia. Se passar pelo ponto de partida, não receberá R$ 200."
         },
         {
             id: 11,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: -3,
             descricao: "Volte 3 espaços."
         },
         {
             id: 12,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Saia da cadeia de graça! Esta carta pode ser guardada até ser usada ou vendida."
         },
         {
             id: 13,
-            preco: 100,
-            aluguel: 50,
+            valor: 50,
+            posicao: null,
             descricao: "Sua loja de bicicletas deu lucro! Receba R$ 50."
         },
         {
             id: 14,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Avance até a companhia mais próxima. Se a companhia não tiver proprietário, você poderá comprá-la do banco. Se tiver proprietário, lance os dados e pague ao proprietário mil vezes o número dos dados. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 15,
-            preco: 100,
-            aluguel: 50,
+            valor: 150,
+            posicao: null,
             descricao: "Receba R$ 150 de lucro da sua empresa de software."
         },
         {
             id: 16,
-            preco: 100,
-            aluguel: 50,
+            valor: null,
+            posicao: null,
             descricao: "Pague R$ 50 para cada jogador para experimentar comida de todo o país."
         }
     ];

@@ -2,7 +2,7 @@ import Tabuleiro from "./tabuleiro.js";
 
 let numeroDeJogadores = 0;
 let numeroDeDados = 0;
-let tabuleiro = null;
+window.tabuleiro = null;
 
 document.getElementById("quantidade-de-jogadores").addEventListener("change", () => {
     let numeroDeJogadores = document.getElementById("quantidade-de-jogadores").value;
@@ -39,7 +39,7 @@ function iniciarJogo() {
         document.getElementById("antes-do-inicio").style.display = "none";
         document.getElementById("durante-jogo").style.display = "flex";
         document.getElementById("tabuleiro").style.display = "grid";
-        tabuleiro = new Tabuleiro(numeroDeJogadores, numeroDeDados);
+        window.tabuleiro = new Tabuleiro(numeroDeJogadores, numeroDeDados);
     }
     else {
         alert("Informações inválidas. Devem ser informadas pelo menos 2 jogadores e 1 dado.");

@@ -24,12 +24,12 @@ export default class Tabuleiro {
         this.preencheEspacos();
         this.criaJogadores();
         this.criaDados();
+        Sorte.embaralharCartas();
         this.vezDeQuem();
 
         this.botaoRolarDados.addEventListener("click",
             () => {
                 this.escondeBotao(this.botaoRolarDados);
-                document.getElementById("total").style.display = "none";
                 let valorDosDados = 0;
                 this.dados = [];
                 for (let i = 0; i < this.numeroDeDados; i++) {
@@ -39,19 +39,14 @@ export default class Tabuleiro {
                 }
                 Dado.rolar(this.dados);
                 setTimeout(() => {
-                    document.getElementById("total").innerHTML = valorDosDados;
                     let espacoAtual = this.quemJoga.espaco;
                     // let novaPosicao = espacoAtual.id + valorDosDados;
                     let novaPosicao = prompt("Digite o valor dos dados");
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
-                    let novoEspaco = this.espacos[novaPosicao];
-                    novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(this.quemJoga.elemento);
-                    this.quemJoga.espaco = novoEspaco;
-                    console.log(this.quemJoga, novaPosicao);
+                    this.moverJogador(this.quemJoga, novaPosicao);
                     this.opcoesDeAcao(this.quemJoga, valorDosDados);
-                    document.getElementById("total").style.display = "block";
                     this.vezDeQuem();
                     // }, 1800);
                 }, 0);
@@ -88,6 +83,7 @@ export default class Tabuleiro {
     }
 
     opcoesDeAcao(jogador, valorDosDados) {
+        this.escondeBotao(this.botaoRolarDados);
         let opcoesEspaco = document.getElementById("opcoes-espaco");
         let espacoAtual = jogador.espaco;
         console.log(espacoAtual)
@@ -168,8 +164,7 @@ export default class Tabuleiro {
             let botao = this.criaBotao('Sorte', opcoesEspaco);
             botao.addEventListener("click", () => {
                 this.apagaTodosBotoes(opcoesEspaco);
-                console.log(Sorte.sorteiaCarta());
-                this.mostraBotao(this.botaoRolarDados);
+                console.log(Sorte.sorteiaCarta(jogador, valorDosDados));
             }
             );
         } else if (espacoAtual.tipo == 'cofre') {
@@ -180,21 +175,36 @@ export default class Tabuleiro {
                 this.mostraBotao(this.botaoRolarDados);
             });
         } else if (espacoAtual.tipo == 'especial') {
-            let especial = espacoAtual;
-            let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
-            botaoSkip.addEventListener("click", () => {
-                this.apagaTodosBotoes(opcoesEspaco);
-                this.mostraBotao(this.botaoRolarDados);
-            });
-        } else if (espacoAtual.tipo == 'especial-cadeia') {
-            let cadeia = espacoAtual;
-            let botaoSkip = this.criaBotao('Pagar', opcoesEspaco);
-            botaoSkip.addEventListener("click", () => {
-                this.apagaTodosBotoes(opcoesEspaco);
-                cadeia.pagarRodada(jogador);
-            });
+            if (espacoAtual.nome == 'Início') {
+                let botao = this.criaBotao('Receber', opcoesEspaco);
+                botao.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    jogador.depositar(200);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            }
+            if (espacoAtual.nome == 'Cadeia') {
+                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            }
+            if (espacoAtual.nome == 'Estacionamento') {
+                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            }
+            if (espacoAtual.nome == 'Vaipracadeia') {
+                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            }
         }
-
     }
 
     criaDados() {
@@ -228,13 +238,10 @@ export default class Tabuleiro {
         }
     }
 
-    moverJogador(jogador, dado) {
-        let posicao = jogador.espaco.id + dado;
-        if (posicao >= 40) {
-            posicao -= 40;
-        }
+    moverJogador(jogador, posicao) {
         let novoEspaco = this.espacos[posicao];
-        jogador.mover(novoEspaco);
+        novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(jogador.elemento);
+        jogador.espaco = novoEspaco;
     }
 
     preencheEspacos() {

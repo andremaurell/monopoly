@@ -1,4 +1,9 @@
 export default class Espaco {
+
+    static getEspacoNome(id) {
+        return window.tabuleiro.espacos[id].nome;
+    }
+
     constructor(id, tipo) {
         this.id = id;
         this.tipo = tipo;
