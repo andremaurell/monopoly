@@ -38,16 +38,16 @@ export default class Tabuleiro {
                 Dado.rolar(dados);
                 setTimeout(() => {
                     let espacoAtual = this.quemJoga.espaco;
-                    // let novaPosicao = espacoAtual.id + valorDosDados;
-                    let novaPosicao = prompt("Digite o valor dos dados");
+                    let novaPosicao = espacoAtual.id + valorDosDados;
+                    //let novaPosicao = prompt("Digite o valor dos dados");
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
                     this.moverJogador(this.quemJoga, novaPosicao);
                     this.opcoesDeAcao(this.quemJoga, dados.reduce((a, b) => a + b, 0));
                     this.vezDeQuem();
-                    // }, 1800);
-                }, 0);
+                }, 1800);
+                //}, 0);
             }
         );
     }
