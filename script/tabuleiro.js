@@ -15,7 +15,6 @@ export default class Tabuleiro {
         this.numeroDeJogadores = numeroDeJogadores;
         this.numeroDeDados = numeroDeDados;
         this.jogadores = [];
-        this.dados = [];
         this.vez = 0;
         this.cont = 0;
         this.painel = document.getElementById('quem-joga');
@@ -29,15 +28,14 @@ export default class Tabuleiro {
 
         this.botaoRolarDados.addEventListener("click",
             () => {
+                this.painel.innerHTML = `${this.quemJoga.nome}`;
                 this.escondeBotao(this.botaoRolarDados);
-                let valorDosDados = 0;
-                this.dados = [];
+                let dados = [];
                 for (let i = 0; i < this.numeroDeDados; i++) {
                     let valorDado = Math.floor(Math.random() * 6) + 1;
-                    this.dados.push(valorDado);
-                    valorDosDados += valorDado;
+                    dados.push(valorDado);
                 }
-                Dado.rolar(this.dados);
+                Dado.rolar(dados);
                 setTimeout(() => {
                     let espacoAtual = this.quemJoga.espaco;
                     // let novaPosicao = espacoAtual.id + valorDosDados;
@@ -46,11 +44,10 @@ export default class Tabuleiro {
                         novaPosicao -= 40;
                     }
                     this.moverJogador(this.quemJoga, novaPosicao);
-                    this.opcoesDeAcao(this.quemJoga, valorDosDados);
+                    this.opcoesDeAcao(this.quemJoga, dados.reduce((a, b) => a + b, 0));
                     this.vezDeQuem();
                     // }, 1800);
                 }, 0);
-                this.painel.innerHTML = `${this.quemJoga.nome}`;
             }
         );
     }
