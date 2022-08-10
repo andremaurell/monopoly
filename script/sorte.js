@@ -15,27 +15,41 @@ export default class Sorte extends Espaco {
             Sorte.contador = 0;
         }
         let carta = Sorte.cartas[Sorte.contador];
-        console.log(carta);
-        if (carta.valor == null && carta.posicao != null) {
-            let novaPosicao = carta.posicao;
-            if (novaPosicao < 0) {
-                novaPosicao = jogador.espaco.id + novaPosicao;
+        //let carta = Sorte.cartas[prompt('Digite o número da carta:')-1];
+        let mostraCarta = document.createElement('div');
+        mostraCarta.className = 'carta';
+        let cartaConteudo = document.createElement('div');
+        cartaConteudo.className = 'carta-conteudo';
+        cartaConteudo.innerHTML = 'Sorte';
+        let cartaTexto = document.createElement('p');
+        cartaTexto.className = 'carta-texto';
+        cartaTexto.innerHTML = carta.descricao;
+        cartaConteudo.appendChild(cartaTexto);
+        let botao = window.tabuleiro.criaBotao('Ok', cartaConteudo);
+        mostraCarta.appendChild(cartaConteudo);
+        document.getElementById('cartas').appendChild(mostraCarta);
+        botao.addEventListener('click', () => {
+            mostraCarta.remove();
+            if (carta.valor == null && carta.posicao != null) {
+                let novaPosicao = carta.posicao;
+                if (novaPosicao < 0) {
+                    novaPosicao = jogador.espaco.id + novaPosicao;
+                }
+                let passouPeloPontoDePartida = (novaPosicao < jogador.espaco.id) && (novaPosicao > 1);
+                if (passouPeloPontoDePartida) {
+                    jogador.depositar(200);
+                }
+                window.tabuleiro.moverJogador(jogador, novaPosicao);
+                window.tabuleiro.opcoesDeAcao(jogador, valorDosDados);
+            } else if (carta.valor != null && carta.posicao == null) {
+                jogador.depositar(carta.valor);
+                window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
+            } else if (carta.valor == null && carta.posicao == null) {
+                console.log("nada")
+                window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
             }
-            let passouPeloPontoDePartida = (novaPosicao < jogador.espaco.id) && (novaPosicao != 1);
-            if (passouPeloPontoDePartida) {
-                jogador.depositar(200);
-            }
-            window.tabuleiro.moverJogador(jogador, novaPosicao);
-            window.tabuleiro.opcoesDeAcao(jogador, valorDosDados);
-        } else if (carta.valor != null && carta.posicao == null) {
-            jogador.depositar(carta.valor);
-            window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
-        } else if (carta.valor == null && carta.posicao == null) {
-            console.log("nada")
-            window.tabuleiro.mostraBotao(window.tabuleiro.botaoRolarDados);
-        }
-
-        Sorte.contador++;
+            Sorte.contador++;
+        });
     }
 
     static cartas = [
@@ -67,13 +81,13 @@ export default class Sorte extends Espaco {
             id: 5,
             valor: null,
             posicao: null,
-            descricao: "Avance até o transporte mais próximo. Se o transporte não tiver proprietário, você poderá comprá-lo do banco. Se tiver proprietário, pague o dobro do aluguel estipulado na carta Título de Posse. Se passar pelo ponto de partida, receba R$ 200."
+            descricao: "Avance até o próximo transporte. Se não tiver dono, poderás comprá-lo. Se tiver, pague o dobro do aluguel. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 6,
             valor: null,
             posicao: null,
-            descricao: "Avance até o transporte mais próximo. Se o transporte não tiver proprietário, você poderá comprá-lo do banco. Se tiver proprietário, pague o dobro do aluguel estipulado na carta Título de Posse. Se passar pelo ponto de partida, receba R$ 200."
+            descricao: "Avance até o próximo transporte. Se não tiver dono, poderás comprá-lo. Se tiver, pague o dobro do aluguel. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
             id: 7,
@@ -121,7 +135,7 @@ export default class Sorte extends Espaco {
             id: 14,
             valor: null,
             posicao: null,
-            descricao: "Avance até a companhia mais próxima. Se a companhia não tiver proprietário, você poderá comprá-la do banco. Se tiver proprietário, lance os dados e pague ao proprietário mil vezes o número dos dados. Se passar pelo ponto de partida, receba R$ 200."
+            descricao: "Vá até a próxima companhia. Se não tiver dono, poderá comprá-la. Se tiver, lance os dados e pague ao proprietário mil vezes o número dos dados. Se passar pelo ponto de partida, receba."
         },
         {
             id: 15,

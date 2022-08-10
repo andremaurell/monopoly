@@ -24,6 +24,7 @@ export default class Tabuleiro {
         this.criaJogadores();
         this.criaDados();
         Sorte.embaralharCartas();
+        Cofre.embaralharCartas();
         this.vezDeQuem();
 
         this.botaoRolarDados.addEventListener("click",
@@ -38,13 +39,14 @@ export default class Tabuleiro {
                 Dado.rolar(dados);
                 setTimeout(() => {
                     let espacoAtual = this.quemJoga.espaco;
+                    let valorDosDados = dados.reduce((a, b) => a + b, 0);
                     let novaPosicao = espacoAtual.id + valorDosDados;
                     //let novaPosicao = prompt("Digite o valor dos dados");
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
                     this.moverJogador(this.quemJoga, novaPosicao);
-                    this.opcoesDeAcao(this.quemJoga, dados.reduce((a, b) => a + b, 0));
+                    this.opcoesDeAcao(this.quemJoga, valorDosDados);
                     this.vezDeQuem();
                 }, 1800);
                 //}, 0);
@@ -157,19 +159,16 @@ export default class Tabuleiro {
                 this.mostraBotao(this.botaoRolarDados);
             });
         } else if (espacoAtual.tipo == 'sorte') {
-            let sorte = espacoAtual;
             let botao = this.criaBotao('Sorte', opcoesEspaco);
             botao.addEventListener("click", () => {
                 this.apagaTodosBotoes(opcoesEspaco);
-                console.log(Sorte.sorteiaCarta(jogador, valorDosDados));
-            }
-            );
+                Sorte.sorteiaCarta(jogador, valorDosDados);
+            });
         } else if (espacoAtual.tipo == 'cofre') {
-            let cofre = espacoAtual;
-            let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
-            botaoSkip.addEventListener("click", () => {
+            let botao = this.criaBotao('Cofre', opcoesEspaco);
+            botao.addEventListener("click", () => {
                 this.apagaTodosBotoes(opcoesEspaco);
-                this.mostraBotao(this.botaoRolarDados);
+                Cofre.sorteiaCarta(jogador, valorDosDados);
             });
         } else if (espacoAtual.tipo == 'especial') {
             if (espacoAtual.nome == 'Início') {
