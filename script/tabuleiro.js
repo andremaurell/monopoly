@@ -40,8 +40,8 @@ export default class Tabuleiro {
                 setTimeout(() => {
                     let espacoAtual = this.quemJoga.espaco;
                     let valorDosDados = dados.reduce((a, b) => a + b, 0);
-                    let novaPosicao = espacoAtual.id + valorDosDados;
-                    //let novaPosicao = prompt("Digite o valor dos dados");
+                    //let novaPosicao = espacoAtual.id + valorDosDados;
+                    let novaPosicao = prompt("Digite o valor dos dados");
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
@@ -180,9 +180,18 @@ export default class Tabuleiro {
                 });
             }
             if (espacoAtual.nome == 'Cadeia') {
-                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                let botaoSkip = this.criaBotao('Pagar Fiança', opcoesEspaco);
                 botaoSkip.addEventListener("click", () => {
                     this.apagaTodosBotoes(opcoesEspaco);
+                    jogador.sacar(100);
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+            }
+            if (espacoAtual.nome == 'Cadeia') {
+                let botaoSkip = this.criaBotao('Ficar Preso', opcoesEspaco);
+                botaoSkip.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    //jogador.ficarPreso()
                     this.mostraBotao(this.botaoRolarDados);
                 });
             }
@@ -194,9 +203,11 @@ export default class Tabuleiro {
                 });
             }
             if (espacoAtual.nome == 'Vaipracadeia') {
-                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
+                let botaoSkip = this.criaBotao('Preso', opcoesEspaco);
                 botaoSkip.addEventListener("click", () => {
                     this.apagaTodosBotoes(opcoesEspaco);
+                    let novaPosicao = espacoAtual.id - 20;
+                    window.tabuleiro.moverJogador(jogador, novaPosicao);
                     this.mostraBotao(this.botaoRolarDados);
                 });
             }

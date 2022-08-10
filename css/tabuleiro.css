@@ -5,10 +5,11 @@
     width: calc(var(--box-size) * 24);
     height: calc(var(--box-size) * 24);
     margin: 1em;
+
 }
 
 .container {
-     background-image: url(../img/Maurellpoly.png);
+    background-image: url(../img/Maurellpoly.png);
     background-size: cover; 
     width: calc(var(--box-size) * 18);
     height: calc(var(--box-size) * 18);
@@ -21,10 +22,6 @@
     border-style: inset;
     padding: 1em;
 }
-
-/* .tabuleiro div {
-    border: .1px solid black;
-} */
 
 .tabuleiro .container {
     border: none;

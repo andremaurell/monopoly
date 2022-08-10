@@ -26,7 +26,7 @@ export default class Jogador {
         this.cartao = document.createElement('div');
         this.cartao.classList.add('cartao-jogador');
         this.cartao.id = 'cartao-jogador' + this.id;
-        
+
         let nome = document.createElement('div');
         nome.classList.add('cartao-nome-jogador');
         nome.style.backgroundColor = this.cor;
@@ -40,8 +40,13 @@ export default class Jogador {
         dinheiroParagrafo.innerHTML = this.dinheiro;
         dinheiro.appendChild(dinheiroParagrafo);
 
+
         this.cartao.appendChild(nome);
         this.cartao.appendChild(dinheiro);
+    }
+
+    esconderCartao(){
+
     }
 
     sacar(valor) {
