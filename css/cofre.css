@@ -1,6 +1,7 @@
 .nome-cofre {
     font-size: .5rem;
     z-index: 1;
+    margin-bottom: 4em;
 }
 
 .preco-cofre {
@@ -16,4 +17,11 @@
 .baixo .cofre {
     display: flex;
     flex-direction: row;
+}
+
+.cofre .informacoes {
+    background-image: url(../img/cofre.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
 }

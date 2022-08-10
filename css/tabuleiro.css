@@ -70,3 +70,45 @@
     grid-row: 4 / span 18;
     flex-direction: column;
 }
+
+#cartas .carta {
+    width: 13.5rem;
+    height: 7.5rem;
+    background-color: white;
+    border-style: inset;
+    border-width: .1em;
+    border-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: .6em;
+    border-radius: .75em;
+    position: relative;
+}
+
+.carta-conteudo {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: .1px solid black;
+    padding: .5em;
+    text-transform: uppercase;
+    font-size: .85rem;
+    font-weight: bold;
+
+}
+
+.carta-texto {
+    font-size: .625rem;
+    width: 100%;
+}
+
+.carta button {
+    position: absolute;
+    bottom: 0;
+    right: 1em;
+}

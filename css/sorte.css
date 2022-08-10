@@ -1,8 +1,7 @@
 .nome-sorte {
     font-size: .5rem;
     z-index: 1;
-    position: absolute;
-    top: 2px;
+    margin-bottom: 5em;
 }
 
 .preco-sorte {
@@ -10,39 +9,21 @@
     font-weight: bold;
 }
 
-.cima .sorte{
+.sorte .informacoes {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.cima .sorte .informacoes{
     background-image: url(../img/sorteCima.png);
-    background-size: cover;
-    background
-    grid-column: 4/ span 18;
-    grid-row: 4/ span 18;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
 }
 
-.direita .sorte{
+.direita .sorte .informacoes{
     background-image: url(../img/sorteDireita.png);
-    background-size:cover; 
-    grid-column: 4/ span 18;
-    grid-row: 4 / span 18;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.baixo .sorte{
+.baixo .sorte .informacoes{
     background-image: url(../img/sorteBaixo.png);
-    background-size: cover;
-    grid-column: 4/ span 18;
-    grid-row: 4/ span 18;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
 }
 
