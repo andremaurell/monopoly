@@ -10,6 +10,7 @@ import Cidade from "./cidade.js";
 
 
 export default class Tabuleiro {
+    static teste = true;
     static cores = ['red', 'blue', 'yellow', 'green', 'white', 'black', 'deeppink', 'purple'];
     constructor(numeroDeJogadores, numeroDeDados) {
         this.numeroDeJogadores = numeroDeJogadores;
@@ -40,16 +41,19 @@ export default class Tabuleiro {
                 setTimeout(() => {
                     let espacoAtual = this.quemJoga.espaco;
                     let valorDosDados = dados.reduce((a, b) => a + b, 0);
-                    //let novaPosicao = espacoAtual.id + valorDosDados;
-                    let novaPosicao = prompt("Digite o valor dos dados");
+                    let novaPosicao = null;
+                    if (Tabuleiro.teste) {
+                        novaPosicao = prompt("Digite o valor dos dados");
+                    } else {
+                        novaPosicao = espacoAtual.id + valorDosDados;
+                    }
                     if (novaPosicao > 40) {
                         novaPosicao -= 40;
                     }
-                    this.moverJogador(this.quemJoga, novaPosicao);
+                    this.quemJoga.mover(novaPosicao);
                     this.opcoesDeAcao(this.quemJoga, valorDosDados);
                     this.vezDeQuem();
-                }, 1800);
-                //}, 0);
+                }, (Tabuleiro.teste ? 0 : 1800));
             }
         );
     }
@@ -180,18 +184,9 @@ export default class Tabuleiro {
                 });
             }
             if (espacoAtual.nome == 'Cadeia') {
-                let botaoSkip = this.criaBotao('Pagar Fiança', opcoesEspaco);
+                let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
                 botaoSkip.addEventListener("click", () => {
                     this.apagaTodosBotoes(opcoesEspaco);
-                    jogador.sacar(100);
-                    this.mostraBotao(this.botaoRolarDados);
-                });
-            }
-            if (espacoAtual.nome == 'Cadeia') {
-                let botaoSkip = this.criaBotao('Ficar Preso', opcoesEspaco);
-                botaoSkip.addEventListener("click", () => {
-                    this.apagaTodosBotoes(opcoesEspaco);
-                    //jogador.ficarPreso()
                     this.mostraBotao(this.botaoRolarDados);
                 });
             }
@@ -203,11 +198,10 @@ export default class Tabuleiro {
                 });
             }
             if (espacoAtual.nome == 'Vaipracadeia') {
-                let botaoSkip = this.criaBotao('Preso', opcoesEspaco);
-                botaoSkip.addEventListener("click", () => {
+                let botao = this.criaBotao('Ir para a cadeia!', opcoesEspaco);
+                botao.addEventListener("click", () => {
                     this.apagaTodosBotoes(opcoesEspaco);
-                    let novaPosicao = espacoAtual.id - 20;
-                    window.tabuleiro.moverJogador(jogador, novaPosicao);
+                    jogador.prender();
                     this.mostraBotao(this.botaoRolarDados);
                 });
             }

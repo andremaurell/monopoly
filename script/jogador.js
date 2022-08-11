@@ -8,11 +8,42 @@ export default class Jogador {
         this.numero = 0;
         this.numeroDeTransportes = 0;
         this.numeroDeCompanhias = 0;
+        this.preso = false;
+        this.vezesSemJogar = 0;
         this.id = id;
         this.espaco = null;
         this.criaElemento();
         this.cartao = null;
         this.criaCartao();
+    }
+
+    estaPreso() {
+        return this.preso;
+    }
+
+    prender() {
+        this.mover(11);
+        this.preso = true;
+    }
+
+    liberar() {
+        this.preso = false;
+    }
+
+    podeJogar() {
+        return !this.preso && this.vezesSemJogar == 0;
+    }
+
+    mover(posicao) {
+        if (this.podeJogar()) {
+            window.tabuleiro.moverJogador(this, posicao);
+        } else if (this.vezesSemJogar > 0 || this.preso) {
+            alert('Você não pode mover, pois está preso ou não pode jogar.');
+            this.vezesSemJogar--;
+            if (this.vezesSemJogar == 0) {
+                this.liberar();
+            }
+        }
     }
 
     criaElemento() {
@@ -45,9 +76,9 @@ export default class Jogador {
         this.cartao.appendChild(dinheiro);
     }
 
-    esconderCartao(){
+    // esconderCartao(){
 
-    }
+    // }
 
     sacar(valor) {
         this.dinheiro -= valor;
