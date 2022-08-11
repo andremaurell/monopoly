@@ -80,74 +80,38 @@ export default class Sorte extends Espaco {
         {
             id: 5,
             valor: null,
-            posicao: null,
-            descricao: "Avance até o próximo transporte. Se não tiver dono, poderás comprá-lo. Se tiver, pague o dobro do aluguel. Se passar pelo ponto de partida, receba R$ 200."
-        },
-        {
-            id: 6,
-            valor: null,
-            posicao: null,
-            descricao: "Avance até o próximo transporte. Se não tiver dono, poderás comprá-lo. Se tiver, pague o dobro do aluguel. Se passar pelo ponto de partida, receba R$ 200."
-        },
-        {
-            id: 7,
-            valor: null,
             posicao: 6,
             descricao: "Avance até o transporte de trem. Se passar pelo ponto de partida, receba R$ 200."
         },
         {
-            id: 8,
+            id: 6,
             valor: -15,
             posicao: null,
             descricao: "Pague R$ 15 para mandar lavar o carro."
         },
         {
-            id: 9,
-            valor: null,
-            posicao: null,
-            descricao: "Hora de redecorar as suas casas. Pague R$ 25 para cada casa e R$ 100 para cada hotel."
-        },
-        {
-            id: 10,
+            id: 7,
             valor: null,
             posicao: 31,
             descricao: "A comissão de fraude da receita federal pegou você no pulo. Vá diretamente para a cadeia. Se passar pelo ponto de partida, não receberá R$ 200."
         },
         {
-            id: 11,
+            id: 8,
             valor: null,
             posicao: -3,
             descricao: "Volte 3 espaços."
         },
         {
-            id: 12,
-            valor: null,
-            posicao: null,
-            descricao: "Saia da cadeia de graça! Esta carta pode ser guardada até ser usada ou vendida."
-        },
-        {
-            id: 13,
+            id: 9,
             valor: 50,
             posicao: null,
             descricao: "Sua loja de bicicletas deu lucro! Receba R$ 50."
         },
         {
-            id: 14,
-            valor: null,
-            posicao: null,
-            descricao: "Vá até a próxima companhia. Se não tiver dono, poderá comprá-la. Se tiver, lance os dados e pague ao proprietário mil vezes o número dos dados. Se passar pelo ponto de partida, receba."
-        },
-        {
-            id: 15,
+            id: 10,
             valor: 150,
             posicao: null,
             descricao: "Receba R$ 150 de lucro da sua empresa de software."
-        },
-        {
-            id: 16,
-            valor: null,
-            posicao: null,
-            descricao: "Pague R$ 50 para cada jogador para experimentar comida de todo o país."
         }
     ];
 

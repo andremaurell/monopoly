@@ -79,71 +79,53 @@ export default class Cofre extends Espaco {
         {
             id: 5,
             valor: null,
-            posicao: null,
-            descricao: "Saia da cadeia gratuitamente. Esta carta pode ser guardada até ser usada ou vendida."
-        },
-        {
-            id: 6,
-            valor: null,
             posicao: 31,
             descricao: "Vá para a cadeia imediatamente! Se passar pelo ponto de partida, não receberá os R$ 200."
         },
         {
-            id: 7,
+            id: 6,
             valor: 100,
             posicao: null,
             descricao: "Seu seguro de férias venceu. Receba R$ 100."
         },
         {
-            id: 8,
+            id: 7,
             valor: 20,
             posicao: null,
             descricao: "Receba R$ 20 da sua restituição do imposto de renda."
         },
         {
-            id: 9,
-            valor: null,
-            posicao: null,
-            descricao: "É seu aniversário! Receba R$ 10 de cada jogador."
-        },
-        {
-            id: 10,
+            id: 8,
             valor: 100,
             posicao: null,
             descricao: "Seu seguro de vida venceu. Receba R$ 100."
         },
         {
-            id: 11,
+            id: 9,
             valor: -100,
             posicao: null,
             descricao: "Pague as despesas do hospital de R$ 100."
         },
         {
-            id: 12,
+            id: 10,
             valor: -50,
             posicao: null,
             descricao: "Pague as despesas da escola de R$ 50."
         },
         {
-            id: 13,
+            id: 11,
             valor: 25,
             posicao: null,
             descricao: "Receba R$ 25 de taxa de consultoria."
         },
         {
-            id: 14,
-            valor: null,
-            posicao: null,
-            descricao: "Pague imposto de todas as suas propriedades. Pague R$ 40 por cada casa e R$ 115 por cada hotel que possuir."
-        },
-        {
-            id: 15,
+            id: 12,
             valor: 10,
             posicao: null,
             descricao: "Você ganhou o segundo lugar em um concurso de beleza. Receba R$ 10."
         },
         {
-            id: 16,
+            id: 13,
             valor: 100,
             posicao: null,
             descricao: "Você herdou R$ 100."

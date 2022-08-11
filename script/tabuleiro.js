@@ -189,6 +189,13 @@ export default class Tabuleiro {
                     this.apagaTodosBotoes(opcoesEspaco);
                     this.mostraBotao(this.botaoRolarDados);
                 });
+                let botaoFianca = this.criaBotao('Pagar Fiança', opcoesEspaco);
+                botaoFianca.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    jogador.sacar(100);
+                    jogador.liberar();
+                    this.mostraBotao(this.botaoRolarDados);
+                });
             }
             if (espacoAtual.nome == 'Estacionamento') {
                 let botaoSkip = this.criaBotao('Skip', opcoesEspaco);
@@ -202,6 +209,14 @@ export default class Tabuleiro {
                 botao.addEventListener("click", () => {
                     this.apagaTodosBotoes(opcoesEspaco);
                     jogador.prender();
+                    this.mostraBotao(this.botaoRolarDados);
+                });
+                let botaoFianca = this.criaBotao('Pagar Fiança', opcoesEspaco);
+                botaoFianca.addEventListener("click", () => {
+                    this.apagaTodosBotoes(opcoesEspaco);
+                    jogador.sacar(100);
+                    jogador.mover(11);
+                    jogador.liberar();
                     this.mostraBotao(this.botaoRolarDados);
                 });
             }

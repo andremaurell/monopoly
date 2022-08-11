@@ -24,10 +24,12 @@ export default class Jogador {
     prender() {
         this.mover(11);
         this.preso = true;
+        this.vezesSemJogar += 2;
     }
 
     liberar() {
         this.preso = false;
+        this.vezesSemJogar = 0;
     }
 
     podeJogar() {
