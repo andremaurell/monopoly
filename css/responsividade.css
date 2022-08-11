@@ -1,11 +1,22 @@
-@media only screen and (max-width: 480px) {
-    .tabuleiro {
-        transform: scale(0.5);
+@media only screen and (max-width: 768px) {
+    body {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        height: fit-content;
     }
-}
 
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-    .tabuleiro {
-        transform: scale(0.75);
+    main {
+        flex-direction: column-reverse;
+    }
+
+    #cartoes-jogadores {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        width: calc(var(--box-size) * 20);
+        height: initial;
     }
 }

@@ -30,10 +30,6 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  background-image:url("../img/fundoPage.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: center;
 }
 ol, ul {
   list-style: none;

@@ -9,11 +9,25 @@
 
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 100vh;
     user-select: none;
+    background-image: url("../img/fundoPage.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+
+main {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: max-content;
 }
 
 p{
@@ -37,17 +51,4 @@ button:focus{
     border:1px solid rgb(105, 58, 58);
 }
 
-#antes-do-inicio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-#durante-jogo {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 30%;
-}
