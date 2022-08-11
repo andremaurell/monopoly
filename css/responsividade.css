@@ -20,3 +20,9 @@
         height: initial;
     }
 }
+
+@media only screen and (min-width: 769px) {
+    .tabuleiro {
+        grid-template-columns: initial;
+    }
+}
