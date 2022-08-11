@@ -261,6 +261,10 @@ export default class Tabuleiro {
         novoEspaco.elemento.getElementsByClassName('jogadores')[0].appendChild(jogador.elemento);
         jogador.espaco = novoEspaco;
     }
+    
+    setTeste(valor) {
+        Tabuleiro.teste = valor;
+    }
 
     preencheEspacos() {
         this.espacos['1'] = new Especial(1, 'Início');
