@@ -10,7 +10,7 @@ import Cidade from "./cidade.js";
 
 
 export default class Tabuleiro {
-    static teste = false;
+    static teste = true;
     static cores = ['red', 'blue', 'yellow', 'green', 'white', 'black', 'deeppink', 'purple'];
     constructor(numeroDeJogadores, numeroDeDados) {
         this.numeroDeJogadores = numeroDeJogadores;
